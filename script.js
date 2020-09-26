@@ -249,7 +249,7 @@
         for (let i = 0; i < itemsperpage; i++) {
             if (games[i+((page-1)*itemsperpage)][4] === "Rood") {
                 document.getElementById(i+1 + "eName").innerHTML =
-                    "<i style='color: #ff0000;'>" + ((i+1)+((page-1)*itemsperpage)) + ". " + games[i+((page-1)*itemsperpage)][0] + "</i>";
+                    "<i class='red'>" + ((i+1)+((page-1)*itemsperpage)) + ". " + games[i+((page-1)*itemsperpage)][0] + "</i>";
             } else {
                 document.getElementById(i+1 + "eName").innerHTML =
                     ((i+1)+((page-1)*itemsperpage)) + ". " + games[i+((page-1)*itemsperpage)][0];

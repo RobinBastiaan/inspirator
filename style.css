@@ -1,6 +1,6 @@
 /* Id Selectors */
 
-#mywrap {
+.inspirator {
     position: relative;
     background: #fccf2d;
     margin: 15px auto;
@@ -12,7 +12,7 @@
 
 /* Class Selectors */
 
-.mybox {
+.panel-box {
     float: left;
     background: #ffffff;
     margin: 5px;
@@ -21,47 +21,47 @@
     height: 430px;
 }
 
-.mycontent {
-    padding: 0 20px 10px;
-    height: 400px;
-}
-
-.mytitle {
+.panel-box__title {
     background: #FEE9A0;
     margin: -18px 3px; /* Different on the wiki: margin: 0px 3px; */
     padding: 0 10px;
 }
 
-.myfooter {
+.panel-box__content {
+    padding: 0 20px 10px;
+    height: 400px;
+}
+
+.panel-box__footer {
     font-weight: lighter;
     font-style: italic;
     font-size: x-small;
     margin: 0;
 }
 
-.myrange {
+.panel-box__range {
     width: 230px;
     margin-right: 15px;
 }
 
-.p {
+.inspirator p {
     font-weight: bold;
     margin: 10px 0 !important;
 }
 
-.table {
+.inspirator table {
     text-align: left;
     width: 100%;
     border: none !important;
     clear: both;
 }
 
-.th {
+.panel-box__results th {
     color: #999999;
     border: none !important;
 }
 
-.td {
+.inspirator td {
     border: none !important;
 }
 
@@ -75,6 +75,18 @@ tr.output > td {
 
 tr.output > td:last-child {
     width: 75px;
+}
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
+.red {
+    color: #ff0000;
 }
 
 /* Element Selectors */
