@@ -35,14 +35,13 @@
             <div class="panel-box__content">
 
                 <!-- Selection for program Type -->
-                <div class="left">
-                    <p>Type programma:</p>
-                </div>
+                <h4>Type programma</h4>
                 <div class="right">
                     <label for="alltype">
                         <input id="alltype" type="checkbox" name="type" checked onClick="mytoggle(this, this.name)">Alles
-                    </label><br>
+                    </label>
                 </div>
+
                 <table>
                     <tr>
                         <td width="150px">
@@ -76,11 +75,10 @@
                     </tr>
                 </table>
 
-                <!-- Selection for program Loca(tion) -->
                 <hr>
-                <div class="left">
-                    <p>Programma locatie:</p>
-                </div>
+
+                <!-- Selection for program Loca(tion) -->
+                <h4>Programma locatie</h4>
                 <div class="right">
                     <label for="allloca">
                         <input id="allloca" type="checkbox" name="loca" checked onClick="mytoggle(this, this.name)">Alles
@@ -111,9 +109,10 @@
                     </tr>
                 </table>
 
-                <!-- Selection for program Date -->
                 <hr>
-                <p>Minimale herhalingsperiode:</p>
+
+                <!-- Selection for program Date -->
+                <h4>Minimale herhalingsperiode</h4>
                 <input class="panel-box__range" type="range" name="points" min="0" max="48" value="24" step="1"
                        onmousemove="showValue(this.value)">
                 <output id="range">0</output>
@@ -134,7 +133,6 @@
                 <div class="right">
                     <input type="submit" value="Zoek!" onclick="mysearch(1)">
                 </div>
-                <br>
             </div>
         </div>
 
