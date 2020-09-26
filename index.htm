@@ -44,7 +44,7 @@
 
                 <table>
                     <tr>
-                        <td width="150px">
+                        <td>
                             <label for="creatief">
                                 <input id="creatief" type="checkbox" name="type" checked value="creatief">Creatief
                             </label><br>
@@ -82,7 +82,7 @@
                 <div class="right">
                     <label for="allloca">
                         <input id="allloca" type="checkbox" name="loca" checked onClick="mytoggle(this, this.name)">Alles
-                    </label><br>
+                    </label>
                 </div>
                 <table>
                     <tr>
@@ -90,7 +90,7 @@
                         <th>Dichtbij</th>
                     </tr>
                     <tr>
-                        <td width="150px">
+                        <td>
                             <label for="bos">
                                 <input id="bos" type="checkbox" name="loca" checked value="bos">Bos
                             </label><br>
@@ -138,6 +138,7 @@
 
         <div class="panel-box">
             <div class="panel-box__content">
+
                 <!-- Navigation -->
                 <span id="1" onClick="showPrograms(games, found, this.id)">[1]</span>
                 <span id="2" onClick="showPrograms(games, found, this.id)">[2]</span>
@@ -151,6 +152,7 @@
                 <span id="10" onClick="showPrograms(games, found, this.id)">[10]</span>
                 <i class="right"><span id="found"></span> resultaten</i>
 
+                <!-- Results -->
                 <div class="panel-box__results">
                     <hr>
                     <table id="1eTable"><!-- Game 1 -->
@@ -228,7 +230,9 @@
             </div>
         </div>
 
-        <p class="panel-box__footer" align="right">*Laatst ge&uuml;pdate op 27 augustus 2018, gemaakt door Robin</p>
+        <p class="panel-box__footer">
+            *Laatst ge&uuml;pdate op <time datetime="2018-08-27">27 augustus 2018</time>, gemaakt door Robin
+        </p>
 
     </div>
 
