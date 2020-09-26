@@ -1,176 +1,237 @@
 <!--
-// INDEX(COMPLETE)
-// asks the user for input to find program-pages on the wiki
-// it is 'complete' because also the style can be found here (all in one file)
+ INDEX(COMPLETE)
+ asks the user for input to find program-pages on the wiki
+ it is 'complete' because also the style can be found here (all in one file)
 
-// TO DO: extra opties: tips
-// TO DO: sinterklaas/kerst
+ TODO: extra opties: tips
+ TODO: sinterklaas/kerst
 -->
 
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-	<title>Inspirator</title>
-	<meta charset="UTF-8" />
-	<link rel="icon" href="favicon.png">
-	<link rel="stylesheet" href="style.css">
-	<script src="script.js" defer></script>
+    <title>Inspirator</title>
+    <meta charset="UTF-8"/>
+    <link rel="icon" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-	<div id="mywrap">
+<div id="wikipage-inner">
+    <p>Klik op "Edit" van deze pagina om de programma's toe te voegen en te updaten.</p>
 
-		<!-- // Begin Main -->
-		<div class="mybox">
-			<div class="mytitle">
-				<h3>Zoek selectie</h3>
-			</div>
-			<div class="mycontent">
+    <!-- The source table -->
+    <table>
 
-				<!-- // Selection for program Type -->
-				<div style="float:left;">
-					<p class="p">Type programma:</p>
-				</div>
-				<div style="float:right;">
-					<label for="alltype"><input id="alltype" type="checkbox" name="type" checked onClick="mytoggle(this, this.name)" /><i>Alles</i></label><br/>
-				</div>
-				<table class="table">
-					<tr><td class="td" width="150px">
-						<label for="creatief"><input id="creatief" type="checkbox" name="type" checked value="creatief" />Creatief</label><br>
-						<label for="sport"><input id="sport" type="checkbox" name="type" checked value="sport" />Sport & Spel</label><br>
-						<label for="strategisch"><input id="strategisch" type="checkbox" name="type" checked value="strategisch" />Strategisch</label><br>
-						<label for="toneel"><input id="toneel" type="checkbox" name="type" checked value="toneel" />Toneel</label>
-					</td><td class="td">
-						<label for="scoutingtechinieken"><input id="scoutingtechinieken" type="checkbox" name="type" checked value="scoutingtechinieken" />Scoutingtechnieken</label><br>
-						<label for="veilig"><input id="veilig" type="checkbox" name="type" checked value="veilig" />Veilig & Gezond</label><br>
-						<label for="thema"><input id="thema" type="checkbox" name="type" checked value="thema" />Thema</label><br>
-						<label for="korte"><input id="korte" type="checkbox" name="type" value="korte" />Korte spelletjes</label>
-					</td></tr>
-				</table>
+    </table>
 
-				<!-- // Selection for program Loca(tion) -->
-				<hr>
-				<div style="float:left;">
-					<p class="p">Programma locatie:</p>
-				</div>
-				<div style="float:right;">
-					<label for="allloca"><input id="allloca" type="checkbox" name="loca" checked onClick="mytoggle(this, this.name)" /><i>Alles</i></label><br/>
-				</div>
-				<table class="table">
-					<tr>
-						<td class="td"><b>Ver weg</b></td>
-						<td class="td"><b>Dichtbij</b></td>
-					</tr>
-					<tr>
-						<td class="td" width="150px">
-							<label for="bos"><input id="bos" type="checkbox" name="loca" checked value="bos" />Bos</label><br>
-							<label for="veld"><input id="veld" type="checkbox" name="loca" checked value="veld" />Veld</label>
-						</td>
-						<td class="td">
-							<label for="clubhuis"><input id="clubhuis" type="checkbox" name="loca" checked value="clubhuis" />Clubhuis</label><br>
-							<label for="binnenstad"><input id="binnenstad" type="checkbox" name="loca" checked value="binnenstad" />Binnenstad</label>
-						</td>
-					</tr>
-				</table>
+    <!-- Begin Main -->
+    <div id="mywrap">
+        <div class="mybox">
+            <div class="mytitle">
+                <h3>Zoek selectie</h3>
+            </div>
 
-				<!-- // Selection for program Date -->
-				<hr>
-				<p class="p">Minimale herhalingsperiode:</p>
-				<input class="myrange" type="range" name="points" min="0" max="48" value="24" step="1" onmousemove="showValue(this.value)">
-				<output id="range">0</output>
+            <div class="mycontent">
 
-				<!-- // The Search Button Section -->
-				<hr>
-				<div style="float:left;">
-					<label for="ever"><input id="ever" type="checkbox" name="nevers" checked value="ever" /><i>Eens gedaan</i></label> /
-					<label for="never"><input id="never" type="checkbox" name="nevers" checked value="never" /><i>Nooit gedaan</i></label><br/>
-					<label for="red"><input id="red" type="checkbox" name="red" checked value="red" /><i>Inclusief rode programma's</i></label><br/>
-				</div>
-				<div style="float:right;">
-					<input type="submit" value="Zoek!" onclick="mysearch(1)" />
-				</div>
-				<br>
-			</div>
-		</div>
-		<div class="mybox">
-			<div class="mycontent">
-				<!-- Navigation -->
-				<span id="1" onClick="showPrograms(games, found, this.id)">[1]</span>
-				<span id="2" onClick="showPrograms(games, found, this.id)">[2]</span>
-				<span id="3" onClick="showPrograms(games, found, this.id)">[3]</span>
-				<span id="4" onClick="showPrograms(games, found, this.id)">[4]</span>
-				<span id="5" onClick="showPrograms(games, found, this.id)">[5]</span>
-				<span id="6" onClick="showPrograms(games, found, this.id)">[6]</span>
-				<span id="7" onClick="showPrograms(games, found, this.id)">[7]</span>
-				<span id="8" onClick="showPrograms(games, found, this.id)">[8]</span>
-				<span id="9" onClick="showPrograms(games, found, this.id)">[9]</span>
-				<span id="10" onClick="showPrograms(games, found, this.id)">[10]</span>
-				<i style="float:right;"><span id="found"></span> resultaten</i>
+                <!-- Selection for program Type -->
+                <div style="float:left;">
+                    <p class="p">Type programma:</p>
+                </div>
+                <div style="float:right;">
+                    <label for="alltype">
+                        <input id="alltype" type="checkbox" name="type" checked onClick="mytoggle(this, this.name)"><i>Alles</i>
+                    </label><br>
+                </div>
+                <table class="table">
+                    <tr>
+                        <td class="td" width="150px">
+                            <label for="creatief">
+                                <input id="creatief" type="checkbox" name="type" checked value="creatief">Creatief
+                            </label><br>
+                            <label for="sport">
+                                <input id="sport" type="checkbox" name="type" checked value="sport">Sport & Spel
+                            </label><br>
+                            <label for="strategisch">
+                                <input id="strategisch" type="checkbox" name="type" checked value="strategisch">Strategisch
+                            </label><br>
+                            <label for="toneel">
+                                <input id="toneel" type="checkbox" name="type" checked value="toneel">Toneel
+                            </label>
+                        </td>
+                        <td class="td">
+                            <label for="scoutingtechinieken">
+                                <input id="scoutingtechinieken" type="checkbox" name="type" checked value="scoutingtechinieken">Scoutingtechnieken
+                            </label><br>
+                            <label for="veilig">
+                                <input id="veilig" type="checkbox" name="type" checked value="veilig">Veilig & Gezond
+                            </label><br>
+                            <label for="thema">
+                                <input id="thema" type="checkbox" name="type" checked value="thema">Thema
+                            </label><br>
+                            <label for="korte">
+                                <input id="korte" type="checkbox" name="type" value="korte">Korte spelletjes
+                            </label>
+                        </td>
+                    </tr>
+                </table>
 
-				<hr style="clear:both;"> <!-- Game 1 -->
-				<table class="table" id="1eTable">
-					<tr><th class="th" colspan="3" id="1eName">1. Geen resultaat.</th></tr>
-					<tr class="output">
-						<td class="td" id="1eType"><br></td>
-						<td class="td" id="1eLoca"></td>
-						<td class="td" id="1eWhen"></td>
-					</tr>
-				</table>
+                <!-- Selection for program Loca(tion) -->
+                <hr>
+                <div style="float:left;">
+                    <p class="p">Programma locatie:</p>
+                </div>
+                <div style="float:right;">
+                    <label for="allloca">
+                        <input id="allloca" type="checkbox" name="loca" checked onClick="mytoggle(this, this.name)"><i>Alles</i>
+                    </label><br>
+                </div>
+                <table class="table">
+                    <tr>
+                        <td class="td"><b>Ver weg</b></td>
+                        <td class="td"><b>Dichtbij</b></td>
+                    </tr>
+                    <tr>
+                        <td class="td" width="150px">
+                            <label for="bos">
+                                <input id="bos" type="checkbox" name="loca" checked value="bos">Bos
+                            </label><br>
+                            <label for="veld">
+                                <input id="veld" type="checkbox" name="loca" checked value="veld">Veld
+                            </label>
+                        </td>
+                        <td class="td">
+                            <label for="clubhuis">
+                                <input id="clubhuis" type="checkbox" name="loca" checked value="clubhuis">Clubhuis
+                            </label><br>
+                            <label for="binnenstad">
+                                <input id="binnenstad" type="checkbox" name="loca" checked value="binnenstad">Binnenstad
+                            </label>
+                        </td>
+                    </tr>
+                </table>
 
-				<hr> <!-- Game 2 -->
-				<table class="table" style="clear:both;" id="2eTable">
-					<tr><th class="th" colspan="3" id="2eName">2. Geen resultaat.</th></tr>
-					<tr class="output">
-						<td class="td" id="2eType"><br></td>
-						<td class="td" id="2eLoca"></td>
-						<td class="td" id="2eWhen"></td>
-					</tr>
-				</table>
+                <!-- Selection for program Date -->
+                <hr>
+                <p class="p">Minimale herhalingsperiode:</p>
+                <input class="myrange" type="range" name="points" min="0" max="48" value="24" step="1"
+                       onmousemove="showValue(this.value)">
+                <output id="range">0</output>
 
-				<hr> <!-- Game 3 -->
-				<table class="table" id="3eTable">
-					<tr><th class="th" colspan="3" id="3eName">3. Geen resultaat.</th></tr>
-					<tr class="output">
-						<td class="td" id="3eType"><br></td>
-						<td class="td" id="3eLoca"></td>
-						<td class="td" id="3eWhen"></td>
-					</tr>
-				</table>
+                <!-- The Search Button Section -->
+                <hr>
+                <div style="float:left;">
+                    <label for="ever">
+                        <input id="ever" type="checkbox" name="nevers" checked value="ever"><i>Eens gedaan</i>
+                    </label> /
+                    <label for="never">
+                        <input id="never" type="checkbox" name="nevers" checked value="never"><i>Nooit gedaan</i>
+                    </label><br>
+                    <label for="red">
+                        <input id="red" type="checkbox" name="red" checked value="red"><i>Inclusief rode programma's</i>
+                    </label><br>
+                </div>
+                <div style="float:right;">
+                    <input type="submit" value="Zoek!" onclick="mysearch(1)">
+                </div>
+                <br>
+            </div>
+        </div>
 
-				<hr> <!-- Game 4 -->
-				<table class="table" id="4eTable">
-					<tr><th class="th" colspan="3" id="4eName">4. Geen resultaat.</th></tr>
-					<tr class="output">
-						<td class="td" id="4eType"><br></td>
-						<td class="td" id="4eLoca"></td>
-						<td class="td" id="4eWhen"></td>
-					</tr>
-				</table>
+        <div class="mybox">
+            <div class="mycontent">
+                <!-- Navigation -->
+                <span id="1" onClick="showPrograms(games, found, this.id)">[1]</span>
+                <span id="2" onClick="showPrograms(games, found, this.id)">[2]</span>
+                <span id="3" onClick="showPrograms(games, found, this.id)">[3]</span>
+                <span id="4" onClick="showPrograms(games, found, this.id)">[4]</span>
+                <span id="5" onClick="showPrograms(games, found, this.id)">[5]</span>
+                <span id="6" onClick="showPrograms(games, found, this.id)">[6]</span>
+                <span id="7" onClick="showPrograms(games, found, this.id)">[7]</span>
+                <span id="8" onClick="showPrograms(games, found, this.id)">[8]</span>
+                <span id="9" onClick="showPrograms(games, found, this.id)">[9]</span>
+                <span id="10" onClick="showPrograms(games, found, this.id)">[10]</span>
+                <i style="float:right;"><span id="found"></span> resultaten</i>
 
-				<hr> <!-- Game 5 -->
-				<table class="table" id="5eTable">
-					<tr><th class="th" colspan="3" id="5eName">5. Geen resultaat.</th></tr>
-					<tr class="output">
-						<td class="td" id="5eType"><br></td>
-						<td class="td" id="5eLoca"></td>
-						<td class="td" id="5eWhen"></td>
-					</tr>
-				</table>
+                <hr style="clear:both;"> <!-- Game 1 -->
+                <table class="table" id="1eTable">
+                    <tr>
+                        <th class="th" colspan="3" id="1eName">1. Geen resultaat.</th>
+                    </tr>
+                    <tr class="output">
+                        <td class="td" id="1eType"><br></td>
+                        <td class="td" id="1eLoca"></td>
+                        <td class="td" id="1eWhen"></td>
+                    </tr>
+                </table>
 
-				<hr> <!-- Game 6 -->
-				<table class="table" id="6eTable">
-					<tr><th class="th" colspan="3" id="6eName">6. Geen resultaat.</th></tr>
-					<tr class="output">
-						<td class="td" id="6eType"><br></td>
-						<td class="td" id="6eLoca"></td>
-						<td class="td" id="6eWhen"></td>
-					</tr>
-				</table>
+                <hr> <!-- Game 2 -->
+                <table class="table" style="clear:both;" id="2eTable">
+                    <tr>
+                        <th class="th" colspan="3" id="2eName">2. Geen resultaat.</th>
+                    </tr>
+                    <tr class="output">
+                        <td class="td" id="2eType"><br></td>
+                        <td class="td" id="2eLoca"></td>
+                        <td class="td" id="2eWhen"></td>
+                    </tr>
+                </table>
 
-			</div>
-		</div> <!-- // End Main -->
+                <hr> <!-- Game 3 -->
+                <table class="table" id="3eTable">
+                    <tr>
+                        <th class="th" colspan="3" id="3eName">3. Geen resultaat.</th>
+                    </tr>
+                    <tr class="output">
+                        <td class="td" id="3eType"><br></td>
+                        <td class="td" id="3eLoca"></td>
+                        <td class="td" id="3eWhen"></td>
+                    </tr>
+                </table>
 
-		<p class="myfooter" align="right">*Laatst ge&uuml;pdate op 27 augustus 2018, gemaakt door Robin</p>
+                <hr> <!-- Game 4 -->
+                <table class="table" id="4eTable">
+                    <tr>
+                        <th class="th" colspan="3" id="4eName">4. Geen resultaat.</th>
+                    </tr>
+                    <tr class="output">
+                        <td class="td" id="4eType"><br></td>
+                        <td class="td" id="4eLoca"></td>
+                        <td class="td" id="4eWhen"></td>
+                    </tr>
+                </table>
 
-	</div> <!-- // End Wrap -->
+                <hr> <!-- Game 5 -->
+                <table class="table" id="5eTable">
+                    <tr>
+                        <th class="th" colspan="3" id="5eName">5. Geen resultaat.</th>
+                    </tr>
+                    <tr class="output">
+                        <td class="td" id="5eType"><br></td>
+                        <td class="td" id="5eLoca"></td>
+                        <td class="td" id="5eWhen"></td>
+                    </tr>
+                </table>
+
+                <hr> <!-- Game 6 -->
+                <table class="table" id="6eTable">
+                    <tr>
+                        <th class="th" colspan="3" id="6eName">6. Geen resultaat.</th>
+                    </tr>
+                    <tr class="output">
+                        <td class="td" id="6eType"><br></td>
+                        <td class="td" id="6eLoca"></td>
+                        <td class="td" id="6eWhen"></td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+
+        <p class="myfooter" align="right">*Laatst ge&uuml;pdate op 27 augustus 2018, gemaakt door Robin</p>
+
+    </div>
+
+</div>
 </body>
 </html>

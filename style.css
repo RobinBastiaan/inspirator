@@ -1,11 +1,6 @@
-/* Div */
-div {
-    -moz-border-radius: 10px 10px / 10px 10px;
-    border-radius: 10px 10px / 10px 10px;
-    margin: 0;
-    padding: 0;
-}
-div#mywrap {
+/* Id Selectors */
+
+#mywrap {
     position: relative;
     background: #fccf2d;
     margin: 15px auto;
@@ -14,7 +9,10 @@ div#mywrap {
     overflow: hidden;
     border: 4px solid #ffb700;
 }
-div.mybox {
+
+/* Class Selectors */
+
+.mybox {
     float: left;
     background: #ffffff;
     margin: 5px;
@@ -22,64 +20,96 @@ div.mybox {
     width: 390px;
     height: 430px;
 }
-div.mycontent {
+
+.mycontent {
     padding: 0 20px 10px;
     height: 400px;
 }
-div.mytitle {
+
+.mytitle {
     background: #FEE9A0;
     margin: -18px 3px; /* Different on the wiki: margin: 0px 3px; */
     padding: 0 10px;
 }
+
 .myfooter {
     font-weight: lighter;
     font-style: italic;
     font-size: x-small;
     margin: 0;
 }
+
 .myrange {
     width: 230px;
-    margin-right:15px;
+    margin-right: 15px;
 }
+
 .p {
     font-weight: bold;
     margin: 10px 0 !important;
 }
+
 .table {
     text-align: left;
     width: 100%;
     border: none !important;
     clear: both;
 }
+
 .th {
-    color:#999999;
+    color: #999999;
     border: none !important;
 }
+
 .td {
     border: none !important;
 }
+
 tr.output > td:first-child {
     width: 155px;
 }
+
 tr.output > td {
     width: 110px;
 }
+
 tr.output > td:last-child {
     width: 75px;
 }
+
+/* Element Selectors */
+
+div {
+    border-radius: 10px 10px / 10px 10px;
+    margin: 0;
+    padding: 0;
+}
+
 span > span {
     cursor: pointer;
 }
+
 a {
     color: #14456E;
     text-decoration: none;
 }
+
 a:hover {
     text-decoration: underline;
 }
+
 label {
     display: inline;
 }
 
-input[type=range]:before { content: attr(min); padding-right: 5px; }
-input[type=range]:after { content: attr(max); padding-left: 5px; }
+/* Attribute Selectors */
+
+input[type=range]:before {
+    content: attr(min);
+    padding-right: 5px;
+}
+
+input[type=range]:after {
+    content: attr(max);
+    padding-left: 5px;
+}
