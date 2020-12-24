@@ -7,8 +7,8 @@ let games = [];
 let when = 0;
 
 // program arrays  // 0 = name,  1 = loca(tion),  2 = type,  3 = when
-let prog = [
-    ["Geen resultaat.", "<br />", "", ""],
+let programs = [
+    ["Geen resultaat.", "<br>", "", ""],
     // Creatief // 20
     ["<a href='http://franciscus.pbworks.com/w/page/Domino%20extra'>Domino extra</a>", "Creatief", "Clubhuis", "11/2013"],
     ["<a href='http://franciscus.pbworks.com/w/page/Zeep%20maken'>Zeep maken</a>", "Creatief", "Clubhuis", "12/2017"],
@@ -34,7 +34,7 @@ let prog = [
 //</script>
 
 //<script>/*1*/// Sport & Spel // 33
-prog.push(
+programs.push(
     ["<a href='http://franciscus.pbworks.com/w/page/(S)tikkertje'>(S)tikkertje</a>", "Sport & Spel", "Bos", "09/2013", "", "Kennismaking"],
     ["<a href='http://franciscus.pbworks.com/w/page/Ken%20de%20Scouts'>Ken de Scouts</a>", "Sport & Spel", "Clubhuis", "09/2015", "", "Kennismaking"],
     ["<a href='http://franciscus.pbworks.com/w/page/Wie%20is%20de%20patrouille'>Wie is de patrouille</a>", "Sport & Spel", "Veld", "09/2014", "", "Patrouille indeling"],
@@ -53,7 +53,7 @@ prog.push(
     ["<a href='http://franciscus.pbworks.com/w/page/Wedden%20dat'>Wedden dat</a>", "Sport & Spel", "Clubhuis", "0/0"],
     ["<a href='http://franciscus.pbworks.com/w/page/Schaatsen'>Schaatsen</a>", "Sport & Spel", "Binnenstad", "03/2017"]
 );
-prog.push(
+programs.push(
     ["<a href='http://franciscus.pbworks.com/w/page/Witte%20SokkenSpel'>Witte SokkenSpel</a>", "Sport & Spel", "Bos", "10/2017"],
     ["<a href='http://franciscus.pbworks.com/w/page/Wet%20%27n%20Wild'>Wet 'n Wild</a>", "Sport & Spel", "Veld", "06/2015"],
     ["<a href='http://franciscus.pbworks.com/w/page/Duinrell'>Duinrell</a>", "Sport & Spel", "Veld", "09/2014"],
@@ -74,7 +74,7 @@ prog.push(
 //</script>
 
 //<script>/*2*/// Strategisch // 64
-prog.push(
+programs.push(
     ["<a href='http://franciscus.pbworks.com/w/page/Vriendenboek'>Vriendenboek</a>", "Strategisch", "Bos", "09/2016", "", "Kennismaking"],
     ["<a href='http://franciscus.pbworks.com/w/page/PatrouillePuzzelSpel'>PatrouillePuzzelSpel</a>", "Strategisch", "Bos", "09/2013", "", "Patrouille indeling"],
     ["<a href='http://franciscus.pbworks.com/w/page/Kinderfoto%20puzzel'>Kinderfoto puzzel</a>", "Strategisch", "Bos", "09/2016", "", "Patrouille indeling"],
@@ -105,7 +105,7 @@ prog.push(
 //</script>
 
 //<script>/*3*/// vervolg Strategisch
-prog.push(
+programs.push(
     ["<a href='http://franciscus.pbworks.com/w/page/Koningsdag'>Koningsdag</a>", "Strategisch", "Bos", "04/2014"],
     ["<a href='http://franciscus.pbworks.com/w/page/Humans%20vs%20Zombies'>Humans vs Zombies</a>", "Strategisch", "Binnenstad", "11/2017"],
     ["<a href='http://franciscus.pbworks.com/w/page/Kwartetten%20in%20het%20donker'>Kwartetten in het donker</a>", "Strategisch", "Clubhuis", "0/0"],
@@ -131,7 +131,7 @@ prog.push(
 //</script>
 
 //<script>/*33*/// vervolg vervolg Strategisch
-prog.push(
+programs.push(
     ["<a href='http://franciscus.pbworks.com/w/page/Jurassic%20Park%20builder'>Jurassic Park builder</a>", "Strategisch", "Clubhuis", "0/0", "Rood"], // Red
     ["<a href='http://franciscus.pbworks.com/w/page/Medieval%20total%20war'>Medieval total war</a>", "Strategisch", "Clubhuis", "0/0", "Rood"], // Red
     ["<a href='http://franciscus.pbworks.com/w/page/De%20voedselketen'>De voedselketen</a>", "Strategisch", "Bos", "0/0", "Rood"], // Red
@@ -153,7 +153,7 @@ prog.push(
 //</script>
 
 //<script>/*4*/// Toneel // 14
-prog.push(
+programs.push(
     ["<a href='http://franciscus.pbworks.com/w/page/Uw-stemt-telt!'>Uw stemt telt!</a>", "Toneel", "Clubhuis", "03/2011"],
     ["<a href='http://franciscus.pbworks.com/w/page/Stop%20motion'>Stop motion</a>", "Toneel", "Clubhuis", "01/2018"],
     ["<a href='http://franciscus.pbworks.com/w/page/Culturenspel'>Culturenspel</a>", "Toneel", "Clubhuis", "11/2012"],
@@ -172,7 +172,7 @@ prog.push(
 //</script>
 
 //<script>/*5*/// Uitdagende Scoutingtechnieken // 21
-prog.push(
+programs.push(
     ["<a href='http://franciscus.pbworks.com/w/page/3-Luik%20KokenCreatiefInstructie'>3-Luik KokenCreatiefInstructie</a>", "Uitdagende Scoutingtechnieken", "Clubhuis", "01/2013"],
     ["<a href='http://franciscus.pbworks.com/w/page/3-Luik%20KokenCreatiefBordspel'>3-Luik KokenCreatiefBordspel</a>", "Uitdagende Scoutingtechnieken", "Clubhuis", "01/2012"],
     ["<a href='http://franciscus.pbworks.com/w/page/3-Luik%20KokenKnopenInstructie'>3-Luik KokenKnopenInstructie</a>", "Uitdagende Scoutingtechnieken", "Clubhuis", "02/2015"],
@@ -196,7 +196,7 @@ prog.push(
     ["<a href='http://franciscus.pbworks.com/w/page/Insigne%20dag'>Insigne dag</a>", "Uitdagende Scoutingtechnieken", "Clubhuis", "0/0", "Rood"] // Red
 );
 
-prog.push(
+programs.push(
     // Veilig & Gezond // 8
     ["<a href='http://franciscus.pbworks.com/w/page/Iron%20Chef'>Iron Chef</a>", "Veilig & Gezond", "Clubhuis", "02/2011"],
     ["<a href='http://franciscus.pbworks.com/w/page/Wereldkeuken'>Wereldkeuken</a>", "Veilig & Gezond", "Clubhuis", "06/2014"],
@@ -210,7 +210,7 @@ prog.push(
 //</script>
 
 //<script>/*6*/// Thema // 14
-prog.push(
+programs.push(
     ["<a href='http://franciscus.pbworks.com/w/page/Rijmen%20en%20Dichten'>Rijmen en Dichten</a>", "Thema", "Binnenstad", "04/2013"],
     ["<a href='http://franciscus.pbworks.com/w/page/Morpheus%20vs%20Helios'>Morpheus vs Helios</a>", "Thema", "Clubhuis", "04/2013"],  // Link fix
     ["<a href='http://franciscus.pbworks.com/w/page/Quiz%20gameshow'>Quiz gameshow</a>", "Thema", "Clubhuis", "03/2012"],
@@ -254,41 +254,44 @@ function showPrograms(games, found, page) {
             document.getElementById(i + 1 + "eName").innerHTML =
                 ((i + 1) + ((page - 1) * itemsPerPage)) + ". " + games[i + ((page - 1) * itemsPerPage)][0];
         }
-        if (games[i + ((page - 1) * itemsPerPage)][1] === "Uitdagende Scoutingtechnieken") {
-            document.getElementById(i + 1 + "eType").innerHTML = "Scoutingtechnieken";
-        } else {
-            document.getElementById(i + 1 + "eType").innerHTML = games[i + ((page - 1) * itemsPerPage)][1];
-        }
+        document.getElementById(i + 1 + "eType").innerHTML =
+            (games[i + ((page - 1) * itemsPerPage)][1] === "Uitdagende Scoutingtechnieken") ? "Scoutingtechnieken" : games[i + ((page - 1) * itemsPerPage)][1];
         if (games[i + ((page - 1) * itemsPerPage)][2] !== "") {
-            if (games[i + ((page - 1) * itemsPerPage)][2] === "Bos") {
-                document.getElementById(i + 1 + "eLoca").innerHTML =
-                    "<img src='http://franciscus.pbworks.com/f/bos.png' alt='' title='Bos' height='15' width='15'> " + games[i + ((page - 1) * itemsPerPage)][2];
-            } else if (games[i + ((page - 1) * itemsPerPage)][2] === "Veld") {
-                document.getElementById(i + 1 + "eLoca").innerHTML =
-                    "<img src='http://franciscus.pbworks.com/f/veld.png' alt='' title='Veld' height='15' width='15'> " + games[i + ((page - 1) * itemsPerPage)][2];
-            } else if (games[i + ((page - 1) * itemsPerPage)][2] === "Clubhuis") {
-                document.getElementById(i + 1 + "eLoca").innerHTML =
-                    "<img src='http://franciscus.pbworks.com/f/clubhuis.png' alt='' title='Clubhuis' height='15' width='15'> " + games[i + ((page - 1) * itemsPerPage)][2];
-            } else if (games[i + ((page - 1) * itemsPerPage)][2] === "Binnenstad") {
-                document.getElementById(i + 1 + "eLoca").innerHTML =
-                    "<img src='http://franciscus.pbworks.com/f/binnenstad.png' alt='' title='Binnenstad' height='15' width='15'> " + games[i + ((page - 1) * itemsPerPage)][2];
-            } else { // standard value
-                document.getElementById(i + 1 + "eLoca").innerHTML =
-                    "<img src='http://franciscus.pbworks.com/f/locatie.png' alt='' title='Locatie' height='15' width='20'> " + games[i + ((page - 1) * itemsPerPage)][2];
+            switch (games[i + ((page - 1) * itemsPerPage)][2]) {
+                case "Bos":
+                    document.getElementById(i + 1 + "eLoca").innerHTML =
+                        "<img src='http://franciscus.pbworks.com/f/bos.png' alt='' title='Bos' height='15' width='15'> " + games[i + ((page - 1) * itemsPerPage)][2];
+                    break;
+                case "Veld":
+                    document.getElementById(i + 1 + "eLoca").innerHTML =
+                        "<img src='http://franciscus.pbworks.com/f/veld.png' alt='' title='Veld' height='15' width='15'> " + games[i + ((page - 1) * itemsPerPage)][2];
+                    break;
+                case "Clubhuis":
+                    document.getElementById(i + 1 + "eLoca").innerHTML =
+                        "<img src='http://franciscus.pbworks.com/f/clubhuis.png' alt='' title='Clubhuis' height='15' width='15'> " + games[i + ((page - 1) * itemsPerPage)][2];
+                    break;
+                case "Binnenstad":
+                    document.getElementById(i + 1 + "eLoca").innerHTML =
+                        "<img src='http://franciscus.pbworks.com/f/binnenstad.png' alt='' title='Binnenstad' height='15' width='15'> " + games[i + ((page - 1) * itemsPerPage)][2];
+                    break;
+                default:
+                    document.getElementById(i + 1 + "eLoca").innerHTML =
+                        "<img src='http://franciscus.pbworks.com/f/locatie.png' alt='' title='Locatie' height='15' width='20'> " + games[i + ((page - 1) * itemsPerPage)][2];
             }
         } else { // no program = empty
             document.getElementById(i + 1 + "eLoca").innerHTML = "";
         }
 
-        if (games[i + ((page - 1) * itemsPerPage)][3] === "0/0") {
-            document.getElementById(i + 1 + "eWhen").innerHTML =
-                "<img src='http://franciscus.pbworks.com/f/wanneer.png' alt='' title='Wanneer' height='15' width='15'> -- / ----";
-        } else if (games[i + ((page - 1) * itemsPerPage)][3] !== "") {
-            document.getElementById(i + 1 + "eWhen").innerHTML =
-                "<img src='http://franciscus.pbworks.com/f/wanneer.png' alt='' title='Wanneer' height='15' width='15'> " + games[i + ((page - 1) * itemsPerPage)][3];
-        } else { // no program = empty
-            document.getElementById(i + 1 + "eWhen").innerHTML = "";
+        let eWhen = "";
+        if (games[i + ((page - 1) * itemsPerPage)][3]) {
+            eWhen = "<img src='http://franciscus.pbworks.com/f/wanneer.png' alt='' title='Wanneer' height='15' width='15'> ";
+            if (games[i + ((page - 1) * itemsPerPage)][3] === "0/0") {
+                eWhen += "-- / ----";
+            } else {
+                eWhen += games[i + ((page - 1) * itemsPerPage)][3];
+            }
         }
+        document.getElementById(i + 1 + "eWhen").innerHTML = eWhen;
     }
 
     document.getElementById("found").innerHTML = found; // set #results found
@@ -296,12 +299,12 @@ function showPrograms(games, found, page) {
     for (let j = 1; j <= 10; j++) { // max 10 pagemarkers
         if (found - ((j - 1) * itemsPerPage) > 0) { // if that page has programs
             if (j === page) { // to set and reset the boldness of the current page
-                document.getElementById(j).innerHTML = "<b><u>[" + j + "]</u></b>";
+                document.getElementById(j.toString()).innerHTML = "<b><u>[" + j + "]</u></b>";
             } else {
-                document.getElementById(j).innerHTML = "<span>[" + j + "]</span>";
+                document.getElementById(j.toString()).innerHTML = "<span>[" + j + "]</span>";
             }
         } else { // hide the pagemarker if the page is empty
-            document.getElementById(j).innerHTML = " "; // invisible char for vertical spacing(alt+255)
+            document.getElementById(j.toString()).innerHTML = " "; // invisible char for vertical spacing(alt+255)
         }
     }
 }
@@ -321,7 +324,7 @@ function showValue(newValue) {
 // select all checkboxes with the same name (type/loca)
 function checkboxToggle(source, name) {
     let checkboxes = document.getElementsByName(name);
-    for (var i = 0, n = checkboxes.length; i < n; i++) {
+    for (let i = 0, n = checkboxes.length; i < n; i++) {
         checkboxes[i].checked = source.checked;
     }
 }
@@ -391,41 +394,41 @@ function search(page) {
     found = 0;
     games = []; // reset game values
 
-    for (let i = 0; i < prog.length; i++) { // cycle through all prog
+    for (let i = 0; i < programs.length; i++) { // cycle through all prog
         for (let j = 0; j < type.length; j++) { // cycle through prog-type checked
             for (let k = 0; k < loca.length; k++) { // cycle through prog-loca checked
-                if (valueInArray(prog[i][1], type[j])) { // check if the prog has the right type
-                    if (valueInArray(prog[i][2], loca[k])) { // check if the prog has the right loca
+                if (valueInArray(programs[i][1], type[j])) { // check if the prog has the right type
+                    if (valueInArray(programs[i][2], loca[k])) { // check if the prog has the right loca
                         if (never === true && ever === true) { // check if user wants to see ever&never done prog's
                             if (red === true) { // check if user wants to include red prog's
-                                if (calculateDifference(prog[i][3]) >= when) { // check if the prog has right date
-                                    games.push(eval("prog[" + i + "]")); // all prog's
+                                if (calculateDifference(programs[i][3]) >= when) { // check if the prog has right date
+                                    games.push(eval("programs[" + i + "]")); // all prog's
                                     rank++;
                                     found++;
                                 }
                             } else { // all not-red prog's and right date
-                                if ((prog[i][4] !== "Rood") && (calculateDifference(prog[i][3]) >= when)) { // check if the prog is not red and right date
-                                    games.push(eval("prog[" + i + "]"));
+                                if ((programs[i][4] !== "Rood") && (calculateDifference(programs[i][3]) >= when)) { // check if the prog is not red and right date
+                                    games.push(eval("programs[" + i + "]"));
                                     rank++;
                                     found++;
                                 }
                             }
                         } else if (never === true) { // check if user wants to ONLY see never done prog's
-                            if ((prog[i][3] === "0/0") && (prog[i][4] !== "Rood")) { // check if the prog has never been done
-                                games.push(eval("prog[" + i + "]"));
+                            if ((programs[i][3] === "0/0") && (programs[i][4] !== "Rood")) { // check if the prog has never been done
+                                games.push(eval("programs[" + i + "]"));
                                 rank++;
                                 found++;
                             }
                             if (red === true) { // check if user wants to include red prog's
-                                if ((prog[i][3] === "0/0") && (prog[i][4] === "Rood")) { // check if the prog has never been done and is red
-                                    games.push(eval("prog[" + i + "]"));
+                                if ((programs[i][3] === "0/0") && (programs[i][4] === "Rood")) { // check if the prog has never been done and is red
+                                    games.push(eval("programs[" + i + "]"));
                                     rank++;
                                     found++;
                                 }
                             }
                         } else if (ever === true) { // check if user wants to ONLY see ever done prog's
-                            if ((prog[i][3] !== "0/0") && (calculateDifference(prog[i][3]) >= when)) { // check if the prog has ever been done and right date
-                                games.push(eval("prog[" + i + "]"));
+                            if ((programs[i][3] !== "0/0") && (calculateDifference(programs[i][3]) >= when)) { // check if the prog has ever been done and right date
+                                games.push(eval("programs[" + i + "]"));
                                 rank++;
                                 found++;
                             } // no need to check for red here; asume done implies not red
@@ -442,8 +445,8 @@ function search(page) {
     });
 
     // make sure there are empty results so there will be a correct output
-    while (rank < prog.length) {
-        games.push(eval("prog[0]"));
+    while (rank < programs.length) {
+        games.push(eval("programs[0]"));
         rank++;
     }
 
