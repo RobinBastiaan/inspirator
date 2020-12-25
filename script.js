@@ -6,6 +6,36 @@ let found = 0;
 let games = [];
 let when = 0;
 
+class program {
+    constructor(name, type, location, date, special) {
+        this.name = name;
+        this.type = type;
+        this.location = location;
+        this.date = date;
+        this.special = special;
+    }
+}
+
+// get all programs given in the html
+function getProgram() {
+    let children = document.getElementById("source-table").children[0];
+    let len = children.childElementCount;
+    let programArray = [];
+
+    for (let i = 1; i < len; i++) {
+        let valueToPush = [];
+        for (let j = 0; j <= 4; j++) {
+            valueToPush[j] = children.children[i].children[j].innerHTML;
+        }
+        let program = new program(...valueToPush);
+        programArray.push(program);
+    }
+
+    // TODO randomize result
+
+    return programArray;
+}
+
 // program arrays  // 0 = name,  1 = loca(tion),  2 = type,  3 = when
 let programs = [
     ["Geen resultaat.", "<br>", "", ""],
@@ -393,6 +423,9 @@ function search(page) {
     let rank = 1;
     found = 0;
     games = []; // reset game values
+
+    // get programs
+    let programArray = getProgram();
 
     for (let i = 0; i < programs.length; i++) { // cycle through all prog
         for (let j = 0; j < type.length; j++) { // cycle through prog-type checked
