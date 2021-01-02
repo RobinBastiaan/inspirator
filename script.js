@@ -6,7 +6,7 @@ let found = 0;
 let games = [];
 let when = 0;
 
-class program {
+class programClass {
     constructor(name, type, location, date, special) {
         this.name = name;
         this.type = type;
@@ -27,7 +27,7 @@ function getProgram() {
         for (let j = 0; j <= 4; j++) {
             valueToPush[j] = children.children[i].children[j].innerHTML;
         }
-        let program = new program(...valueToPush);
+        let program = new programClass(...valueToPush);
         programArray.push(program);
     }
 

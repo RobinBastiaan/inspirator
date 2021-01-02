@@ -1,3 +1,7 @@
+#source-table { /* only show the source table when editing the page */
+    display: none;
+}
+
 /* Class Selectors */
 
 .inspirator {
