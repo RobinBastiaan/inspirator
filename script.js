@@ -43,8 +43,13 @@ function getProgram() {
 
     for (let i = 1; i < len; i++) {
         let valueToPush = [];
+
         for (let j = 0; j <= 5; j++) {
-            valueToPush[j] = children.children[i].children[j].innerHTML;
+            if (j === 0 || j === 5) { // only columns 1 to 4 need to have the split separator
+                valueToPush[j] = children.children[i].children[j].innerHTML;
+            } else {
+                valueToPush[j] = children.children[i].children[j].innerHTML.split(',');
+            }
         }
         let program = new programClass(...valueToPush);
         programArray.push(program);
@@ -171,10 +176,10 @@ function search(page) {
     foundPrograms = []; // reset values
     let programs = getProgram();
     programs.forEach(function (program) {
-        if (!selectedTypes.includes(program.type)) {
+        if (!selectedTypes.filter(value => program.type.includes(value))) {
             return;
         }
-        if (!selectedLocations.includes(program.location)) {
+        if (!selectedLocations.filter(value => program.location.includes(value))) {
             return;
         }
         if (program.date !== '' && !ever) {
@@ -186,7 +191,7 @@ function search(page) {
         if (program.unfinished === red) {
             return;
         }
-        if (calculateDifference(program.date) >= when) { // check if the program has right date
+        if (calculateDifference(program.date[program.date.length - 1]) >= when) { // check if the program has right date
         }
 
         foundPrograms.push(program);
@@ -194,7 +199,7 @@ function search(page) {
 
     // sort the results by date
     foundPrograms.sort(function (a, b) {
-        return parseFloat(calculateDifference(b['date'])) - parseFloat(calculateDifference(a['date']))
+        return parseFloat(calculateDifference(b['date'][b['date'].length - 1])) - parseFloat(calculateDifference(a['date'][a['date'].length - 1]))
     });
 
     console.log('foundPrograms', foundPrograms);
