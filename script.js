@@ -71,7 +71,8 @@ function showPrograms(foundPrograms, page) {
             return;
         }
         let name = ((i + 1) + ((page - 1) * itemsPerPage)) + '. ' + program.name;
-        name = (program.unfinished) ? '<i class="red">' + name + '</i>' : name;
+        let unfinishedColor = (program.unfinished) ? 'class="red"' : '';
+        name = '<a ' + unfinishedColor + ' href="http://franciscus.pbworks.com/w/page/' + program.name + '">' + name + '</a>';
         document.getElementById(i + 1 + 'eName').innerHTML = name;
         document.getElementById(i + 1 + 'eType').innerHTML = program.type;
         document.getElementById(i + 1 + 'eLoca').innerHTML = (!program.location) ? '' :
@@ -174,14 +175,9 @@ function search(page) {
         return parseFloat(calculateDifference(b['date'][b['date'].length - 1])) - parseFloat(calculateDifference(a['date'][a['date'].length - 1]))
     });
 
-    console.log('foundPrograms', foundPrograms);
     // show the result
     showPrograms(foundPrograms, page);
 }
-
-//</script>
-
-//<script>/*3*/// check if a values is in an array
 
 // calculate difference in months with current time
 function calculateDifference(programDate) {
