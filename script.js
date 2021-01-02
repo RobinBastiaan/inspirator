@@ -18,7 +18,7 @@ const locations = {
     'bos': 'Bos',
     'veld': 'Veld',
     'clubhuis': 'Clubhuis',
-    'binnenstad': 'Binnenstad',
+    'stad': 'Stad',
     'online': 'Online',
     'anders': 'Anders',
 };
@@ -149,10 +149,10 @@ function search(page) {
     foundPrograms = []; // reset values
     let programs = getProgram();
     programs.forEach(function (program) {
-        if (!selectedTypes.filter(value => program.type.includes(value))) {
+        if (!selectedTypes.some(value => program.type.includes(value))) {
             return;
         }
-        if (!selectedLocations.filter(value => program.location.includes(value))) {
+        if (!selectedLocations.some(value => program.location.includes(value))) {
             return;
         }
         if (program.date[0] && !ever) {
