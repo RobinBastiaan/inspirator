@@ -19,6 +19,8 @@ const locations = {
     'veld': 'Veld',
     'clubhuis': 'Clubhuis',
     'binnenstad': 'Binnenstad',
+    'online': 'Online',
+    'anders': 'Anders',
 };
 
 
