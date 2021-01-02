@@ -7,12 +7,13 @@ let games = [];
 let when = 0;
 
 class programClass {
-    constructor(name, location, type, date, special) {
+    constructor(name, location, type, date, special, unfinished) {
         this.name = name;
         this.location = location;
         this.type = type;
         this.date = date;
         this.special = special;
+        this.unfinished = !!unfinished;
     }
 }
 
@@ -24,7 +25,7 @@ function getProgram() {
 
     for (let i = 1; i < len; i++) {
         let valueToPush = [];
-        for (let j = 0; j <= 4; j++) {
+        for (let j = 0; j <= 5; j++) {
             valueToPush[j] = children.children[i].children[j].innerHTML;
         }
         let program = new programClass(...valueToPush);
@@ -150,7 +151,7 @@ function search(page) {
         selectedTypes.push("Korte spelletjes");
     }
 
-    // new loca-input
+    // new location-input
     let selectedLocations = [];
     if (document.querySelector('input[value="bos"]').checked) {
         selectedLocations.push("Bos");
