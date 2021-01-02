@@ -64,56 +64,28 @@ function showPrograms(foundPrograms, page) {
         return;
     }
 
+    // show the programs on this page
     for (let i = 0; i < itemsPerPage; i++) {
-        if (foundPrograms[i + ((page - 1) * itemsPerPage)]['date'] === "Rood") {
-            document.getElementById(i + 1 + "eName").innerHTML =
-                "<i class='red'>" + ((i + 1) + ((page - 1) * itemsPerPage)) + ". " + foundPrograms[i + ((page - 1) * itemsPerPage)]['name'] + "</i>";
-        } else {
-            document.getElementById(i + 1 + "eName").innerHTML =
-                ((i + 1) + ((page - 1) * itemsPerPage)) + ". " + foundPrograms[i + ((page - 1) * itemsPerPage)]['name'];
+        let program = foundPrograms[i + ((page - 1) * itemsPerPage)];
+        if (!program) {
+            return;
         }
-        document.getElementById(i + 1 + "eType").innerHTML =
-            (foundPrograms[i + ((page - 1) * itemsPerPage)]['type'] === "Uitdagende Scoutingtechnieken") ? "Scoutingtechnieken" : foundPrograms[i + ((page - 1) * itemsPerPage)]['type'];
-        if (foundPrograms[i + ((page - 1) * itemsPerPage)]['location'] !== "") {
-            switch (foundPrograms[i + ((page - 1) * itemsPerPage)]['location']) {
-                case "Bos":
-                    document.getElementById(i + 1 + "eLoca").innerHTML =
-                        "<img src='http://franciscus.pbworks.com/f/bos.png' alt='' title='Bos' height='15' width='15'> " + foundPrograms[i + ((page - 1) * itemsPerPage)]['location'];
-                    break;
-                case "Veld":
-                    document.getElementById(i + 1 + "eLoca").innerHTML =
-                        "<img src='http://franciscus.pbworks.com/f/veld.png' alt='' title='Veld' height='15' width='15'> " + foundPrograms[i + ((page - 1) * itemsPerPage)]['location'];
-                    break;
-                case "Clubhuis":
-                    document.getElementById(i + 1 + "eLoca").innerHTML =
-                        "<img src='http://franciscus.pbworks.com/f/clubhuis.png' alt='' title='Clubhuis' height='15' width='15'> " + foundPrograms[i + ((page - 1) * itemsPerPage)]['location'];
-                    break;
-                case "Binnenstad":
-                    document.getElementById(i + 1 + "eLoca").innerHTML =
-                        "<img src='http://franciscus.pbworks.com/f/binnenstad.png' alt='' title='Binnenstad' height='15' width='15'> " + foundPrograms[i + ((page - 1) * itemsPerPage)]['location'];
-                    break;
-                default:
-                    document.getElementById(i + 1 + "eLoca").innerHTML =
-                        "<img src='http://franciscus.pbworks.com/f/locatie.png' alt='' title='Locatie' height='15' width='20'> " + foundPrograms[i + ((page - 1) * itemsPerPage)]['location'];
-            }
-        } else { // no program = empty
-            document.getElementById(i + 1 + "eLoca").innerHTML = "";
-        }
-
-        let eWhen = "";
-        if (foundPrograms[i + ((page - 1) * itemsPerPage)][3]) {
-            eWhen = "<img src='http://franciscus.pbworks.com/f/wanneer.png' alt='' title='Wanneer' height='15' width='15'> ";
-            if (foundPrograms[i + ((page - 1) * itemsPerPage)][3] === "0/0") {
-                eWhen += "-- / ----";
-            } else {
-                eWhen += foundPrograms[i + ((page - 1) * itemsPerPage)]['date'];
-            }
-        }
-        document.getElementById(i + 1 + "eWhen").innerHTML = eWhen;
+        let name = ((i + 1) + ((page - 1) * itemsPerPage)) + '. ' + program.name;
+        name = (program.unfinished) ? '<i class="red">' + name + '</i>' : name;
+        document.getElementById(i + 1 + 'eName').innerHTML = name;
+        document.getElementById(i + 1 + 'eType').innerHTML = program.type;
+        document.getElementById(i + 1 + 'eLoca').innerHTML = (!program.location) ? '' :
+            //'<img src="http://franciscus.pbworks.com/f/' + program.location[0].toString().toLowerCase() + '.png" alt="" title="' + program.location + '" height="15" width="15"> ' + program.location;
+            '<img src="src/' + program.location[0].toString().toLowerCase() + '.png" alt="" title="' + program.location + '" height="15" width="15"> ' + program.location;
+        let eWhen = (program.date[0]) ? program.date : '-- / ----';
+        document.getElementById(i + 1 + 'eWhen').innerHTML =
+            // '<img src="http://franciscus.pbworks.com/f/wanneer.png" alt="" title="Wanneer" height="15" width="15"> ' + eWhen;
+            '<img src="src/wanneer.png" alt="" title="Wanneer" height="15" width="15"> ' + eWhen;
     }
 
-    document.getElementById("found").innerHTML = foundPrograms.length; // set #results found
+    document.getElementById('found').innerHTML = foundPrograms.length; // set #results found
 
+    // show page markers
     for (let j = 1; j <= 10; j++) { // max 10 page markers
         if (foundPrograms.length - ((j - 1) * itemsPerPage) > 0) { // if that page has programs
             if (j === page) { // to set and reset the boldness of the current page
@@ -133,9 +105,9 @@ function showValue(newValue) {
     //months = newValue % 12;
     //document.getElementById("range").innerHTML = years + " jr, " + months + " mnd"; // output
     if (newValue === 1) {
-        document.getElementById("range").innerHTML = newValue + " maand"; // output single
+        document.getElementById('range').innerHTML = newValue + ' maand'; // output single
     } else {
-        document.getElementById("range").innerHTML = newValue + " maanden"; // output
+        document.getElementById('range').innerHTML = newValue + ' maanden'; // output
     }
 }
 
@@ -182,13 +154,13 @@ function search(page) {
         if (!selectedLocations.filter(value => program.location.includes(value))) {
             return;
         }
-        if (program.date !== '' && !ever) {
+        if (program.date[0] && !ever) {
             return;
         }
-        if (program.date === '' && !never) {
+        if (!program.date[0] && !never) {
             return;
         }
-        if (program.unfinished === red) {
+        if (program.unfinished && !red) {
             return;
         }
         if (calculateDifference(program.date[program.date.length - 1]) >= when) { // check if the program has right date
