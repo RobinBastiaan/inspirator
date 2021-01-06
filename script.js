@@ -65,9 +65,11 @@ function showPrograms(foundPrograms, page) {
     }
 
     // show the programs on this page
+    let skipped = 0;
     for (let i = 0; i < itemsPerPage; i++) {
         let program = foundPrograms[i + ((page - 1) * itemsPerPage)];
         if (!program) {
+            skipped++;
             return;
         }
         let name = ((i + 1) + ((page - 1) * itemsPerPage)) + '. ' + program.name;
@@ -143,6 +145,7 @@ function search(page) {
     // new special option-input
     let ever = document.querySelector('input[value="ever"]').checked;
     let never = document.querySelector('input[value="never"]').checked;
+    let always = document.querySelector('input[value="always"]').checked;
     let red = document.querySelector('input[value="red"]').checked;
 
     // cycle through all programs and only add those that match the search parameters
@@ -159,6 +162,9 @@ function search(page) {
             return;
         }
         if (!program.date[0] && !never) {
+            return;
+        }
+        if (program.date[0] === '*' && !always) {
             return;
         }
         if (program.unfinished && !red) {
