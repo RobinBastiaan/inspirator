@@ -74,8 +74,9 @@ function showPrograms(foundPrograms, page) {
         }
         let name = ((i + 1) + ((page - 1) * itemsPerPage)) + '. ' + program.name;
         let unfinishedColor = (program.unfinished) ? 'class="red"' : '';
+        let specialText = program.special != '' ? ' (' + program.special + ')' : '';
         name = '<a ' + unfinishedColor + ' href="http://franciscus.pbworks.com/w/page/' + program.name + '">' + name + '</a>';
-        document.getElementById(i + 1 + 'eName').innerHTML = name;
+        document.getElementById(i + 1 + 'eName').innerHTML = name + specialText;
         document.getElementById(i + 1 + 'eType').innerHTML = program.type;
         document.getElementById(i + 1 + 'eLoca').innerHTML = (!program.location) ? '' :
             //'<img src="http://franciscus.pbworks.com/f/' + program.location[0].toString().toLowerCase() + '.png" alt="" title="' + program.location + '" height="15" width="15"> ' + program.location;
@@ -142,7 +143,7 @@ function search(page) {
         }
     }
 
-    // new special option-input
+    // new additional option-input
     let ever = document.querySelector('input[value="ever"]').checked;
     let never = document.querySelector('input[value="never"]').checked;
     let always = document.querySelector('input[value="always"]').checked;
