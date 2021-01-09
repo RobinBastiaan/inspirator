@@ -3,7 +3,6 @@
 const repeat = 24;
 const itemsPerPage = 6;
 let foundPrograms = [];
-let when = 0;
 const types = {
     'creatief': 'Creatief',
     'sport': 'Sport & Spel',
@@ -48,7 +47,7 @@ function getProgram() {
             if (j === 0 || j === 5) { // only columns 1 to 4 need to have the split separator
                 valueToPush[j] = children.children[i].children[j].innerHTML.trim().replace('&amp;', '&');
             } else {
-                valueToPush[j] = children.children[i].children[j].innerHTML.split(',').map(function(item) {
+                valueToPush[j] = children.children[i].children[j].innerHTML.split(',').map(function (item) {
                     return item.trim().replace('&amp;', '&');
                 });
             }
@@ -145,6 +144,9 @@ function search(page) {
         }
     }
 
+    // new when-input
+    let when = document.getElementById('date').value;
+
     // new additional option-input
     let ever = document.querySelector('input[value="ever"]').checked;
     let never = document.querySelector('input[value="never"]').checked;
@@ -161,19 +163,20 @@ function search(page) {
         if (!selectedLocations.some(value => program.location.includes(value))) {
             return;
         }
-        if (program.date[0] && !ever) {
+        if (!ever && program.date[0] && program.date[0] !== '*') {
             return;
         }
-        if (!program.date[0] && !never) {
+        if (!never && !program.date[0] && program.date[0] !== '*') {
             return;
         }
-        if (program.date[0] === '*' && !always) {
+        if (!always && program.date[0] === '*') {
             return;
         }
-        if (program.unfinished && !red) {
+        if (!red && program.unfinished) {
             return;
         }
-        if (calculateDifference(program.date[program.date.length - 1]) >= when) { // check if the program has right date
+        if (calculateDifference(program.date[program.date.length - 1]) < when) { // check if the program has right date
+            return;
         }
 
         foundPrograms.push(program);
