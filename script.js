@@ -9,7 +9,7 @@ const types = {
     'sport': 'Sport & Spel',
     'strategisch': 'Strategisch',
     'toneel': 'Toneel',
-    'scoutingtechnieken': 'Uitdagende Scoutingtechnieken',
+    'scoutingtechnieken': 'Scoutingtechnieken',
     'veilig': 'Veilig & Gezond',
     'thema': 'Thema',
     'korte': 'Korte spelletjes',
@@ -46,9 +46,11 @@ function getProgram() {
 
         for (let j = 0; j <= 5; j++) {
             if (j === 0 || j === 5) { // only columns 1 to 4 need to have the split separator
-                valueToPush[j] = children.children[i].children[j].innerHTML;
+                valueToPush[j] = children.children[i].children[j].innerHTML.trim().replace('&amp;', '&');
             } else {
-                valueToPush[j] = children.children[i].children[j].innerHTML.split(',');
+                valueToPush[j] = children.children[i].children[j].innerHTML.split(',').map(function(item) {
+                    return item.trim().replace('&amp;', '&');
+                });
             }
         }
         let program = new programClass(...valueToPush);
@@ -77,10 +79,10 @@ function showPrograms(foundPrograms, page) {
         let specialText = program.special != '' ? ' (' + program.special + ')' : '';
         name = '<a ' + unfinishedColor + ' href="http://franciscus.pbworks.com/w/page/' + program.name + '">' + name + '</a>';
         document.getElementById(i + 1 + 'eName').innerHTML = name + specialText;
-        document.getElementById(i + 1 + 'eType').innerHTML = program.type;
+        document.getElementById(i + 1 + 'eType').innerHTML = program.type.join(', ');
         document.getElementById(i + 1 + 'eLoca').innerHTML = (!program.location) ? '' :
             //'<img src="http://franciscus.pbworks.com/f/' + program.location[0].toString().toLowerCase() + '.png" alt="" title="' + program.location + '" height="15" width="15"> ' + program.location;
-            '<img src="src/' + program.location[0].toString().toLowerCase() + '.png" alt="" title="' + program.location + '" height="15" width="15"> ' + program.location;
+            '<img src="src/' + program.location[0].toString().toLowerCase() + '.png" alt="" title="' + program.location + '" height="15" width="15"> ' + program.location.join(', ');
         let eWhen = (program.date[0]) ? program.date : '-- / ----';
         document.getElementById(i + 1 + 'eWhen').innerHTML =
             // '<img src="http://franciscus.pbworks.com/f/wanneer.png" alt="" title="Wanneer" height="15" width="15"> ' + eWhen;
