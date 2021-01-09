@@ -9,7 +9,7 @@ const types = {
     'sport': 'Sport & Spel',
     'strategisch': 'Strategisch',
     'toneel': 'Toneel',
-    'scoutingtechinieken': 'Uitdagende Scoutingtechnieken',
+    'scoutingtechnieken': 'Uitdagende Scoutingtechnieken',
     'veilig': 'Veilig & Gezond',
     'thema': 'Thema',
     'korte': 'Korte spelletjes',
