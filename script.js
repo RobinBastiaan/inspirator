@@ -127,7 +127,7 @@ function checkboxToggle(source, name) {
 //</script>
 
 //<script>/*2*/// search for the programs
-function search(page) {
+function search(page = 1) {
     // new type-input
     let selectedTypes = [];
     for (let key in types) {
@@ -206,7 +206,27 @@ function calculateDifference(programDate) {
     return ((yyyy - whenResult[1]) * 12) + (mm - whenResult[0]); // calculate difference in months
 }
 
-// initial function calls
-window.addEventListener("onload", showValue(repeat), false); // initial slider-range
-window.addEventListener("onload", search(1), false); // initial programs
+// initial function calls and eventListeners
+window.addEventListener("DOMContentLoaded", function (event) {
+    showValue(repeat); // initial slider-range
+    search(1); // initial programs
+
+    document.getElementById('search').addEventListener('click', function () {
+        search(1)
+    });
+
+    let checkAll = document.getElementsByClassName('check-all');
+    for (let i = 0; i < checkAll.length; i++) {
+        checkAll[i].addEventListener('click', function () {
+            checkboxToggle(this, this.name);
+        });
+    }
+
+    let pages = document.getElementsByClassName('pages');
+    for (let i = 0; i < pages.length; i++) {
+        pages[i].addEventListener('click', function () {
+            showPrograms(foundPrograms, this.id);
+        });
+    }
+});
 //</script>

@@ -2461,8 +2461,8 @@
                 <!-- Selection for program Type -->
                 <h4>Type programma</h4>
                 <div class="right">
-                    <label for="alltype">
-                        <input id="alltype" type="checkbox" name="type" checked onClick="checkboxToggle(this, this.name)">Alles
+                    <label for="all-type">
+                        <input id="all-type" class="check-all" type="checkbox" name="type" checked>Alles
                     </label>
                 </div>
 
@@ -2504,8 +2504,8 @@
                 <!-- Selection for program Loca(tion) -->
                 <h4>Programma locatie</h4>
                 <div class="right">
-                    <label for="allloca">
-                        <input id="allloca" type="checkbox" name="loca" checked onClick="checkboxToggle(this, this.name)">Alles
+                    <label for="all-loca">
+                        <input id="all-loca" class="check-all" type="checkbox" name="loca" checked>Alles
                     </label>
                 </div>
                 <table>
@@ -2567,7 +2567,7 @@
                     </label><br>
                 </div>
                 <div class="right">
-                    <input type="submit" value="Zoek!" onclick="search(1)">
+                    <input id="search" type="submit" value="Zoek!">
                 </div>
             </div>
         </div>
@@ -2576,16 +2576,16 @@
             <div class="panel-box__content">
 
                 <!-- Navigation -->
-                <span id="1" onClick="showPrograms(foundPrograms, this.id)">[1]</span>
-                <span id="2" onClick="showPrograms(foundPrograms, this.id)">[2]</span>
-                <span id="3" onClick="showPrograms(foundPrograms, this.id)">[3]</span>
-                <span id="4" onClick="showPrograms(foundPrograms, this.id)">[4]</span>
-                <span id="5" onClick="showPrograms(foundPrograms, this.id)">[5]</span>
-                <span id="6" onClick="showPrograms(foundPrograms, this.id)">[6]</span>
-                <span id="7" onClick="showPrograms(foundPrograms, this.id)">[7]</span>
-                <span id="8" onClick="showPrograms(foundPrograms, this.id)">[8]</span>
-                <span id="9" onClick="showPrograms(foundPrograms, this.id)">[9]</span>
-                <span id="10" onClick="showPrograms(foundPrograms, this.id)">[10]</span>
+                <span id="1" class="pages">[1]</span>
+                <span id="2" class="pages">[2]</span>
+                <span id="3" class="pages">[3]</span>
+                <span id="4" class="pages">[4]</span>
+                <span id="5" class="pages">[5]</span>
+                <span id="6" class="pages">[6]</span>
+                <span id="7" class="pages">[7]</span>
+                <span id="8" class="pages">[8]</span>
+                <span id="9" class="pages">[9]</span>
+                <span id="10" class="pages">[10]</span>
                 <i class="right"><span id="found"></span> resultaten</i>
 
                 <!-- Results -->
