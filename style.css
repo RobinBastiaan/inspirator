@@ -128,7 +128,13 @@
 }
 
 .inspirator tr.output > td:last-child {
-    width: 75px;
+    width: 76px;
+}
+
+.inspirator img {
+    vertical-align: top;
+    height: 18px;
+    width: 18px;
 }
 
 /* Attribute Selectors */

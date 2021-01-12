@@ -1,8 +1,8 @@
 <!-- The Script for the Inspirator -->
 //<script>/*0*/// Global initial values
+let foundPrograms = [];
 const repeat = 24;
 const itemsPerPage = 6;
-let foundPrograms = [];
 const types = {
     'creatief': 'Creatief',
     'sport': 'Sport & Spel',
@@ -21,7 +21,6 @@ const locations = {
     'online': 'Online',
     'anders': 'Anders',
 };
-
 
 class programClass {
     constructor(name, location, type, date, special, unfinished) {
@@ -80,12 +79,12 @@ function showPrograms(foundPrograms, page) {
         document.getElementById(i + 1 + 'eName').innerHTML = name + specialText;
         document.getElementById(i + 1 + 'eType').innerHTML = program.type.join(', ');
         document.getElementById(i + 1 + 'eLoca').innerHTML = (!program.location) ? '' :
-            //'<img src="http://franciscus.pbworks.com/f/' + program.location[0].toString().toLowerCase() + '.png" alt="" title="' + program.location + '" height="15" width="15"> ' + program.location;
-            '<img src="src/' + program.location[0].toString().toLowerCase() + '.png" alt="" title="' + program.location + '" height="15" width="15"> ' + program.location.join(', ');
+            //'<img src="http://franciscus.pbworks.com/f/' + program.location[0].toString().toLowerCase() + '.png" alt="" title="' + program.location + '" height="18" width="18"> ' + program.location;
+            '<img src="src/' + program.location[0].toString().toLowerCase() + '.png" alt="" title="' + program.location + '" height="18" width="18"> ' + program.location.join(', ');
         let eWhen = (program.date[0]) ? program.date : '-- / ----';
         document.getElementById(i + 1 + 'eWhen').innerHTML =
-            // '<img src="http://franciscus.pbworks.com/f/wanneer.png" alt="" title="Wanneer" height="15" width="15"> ' + eWhen;
-            '<img src="src/wanneer.png" alt="" title="Wanneer" height="15" width="15"> ' + eWhen;
+            // '<img src="http://franciscus.pbworks.com/f/wanneer.png" alt="" title="Wanneer" height="18" width="18"> ' + eWhen;
+            '<img src="src/wanneer.png" alt="" title="Wanneer" height="18" width="18"> ' + eWhen;
     }
 
     document.getElementById('found').innerHTML = foundPrograms.length; // set #results found
