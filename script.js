@@ -58,74 +58,7 @@ function getProgram() {
     return programArray;
 }
 
-//<script>/*1*/// display the programs with their values
-function showPrograms(foundPrograms, page) {
-    if (!foundPrograms) {
-        return;
-    }
-
-    // show the programs on this page
-    let skipped = 0;
-    for (let i = 0; i < itemsPerPage; i++) {
-        let program = foundPrograms[i + ((page - 1) * itemsPerPage)];
-        if (!program) {
-            skipped++;
-            return;
-        }
-        let name = ((i + 1) + ((page - 1) * itemsPerPage)) + '. ' + program.name;
-        let unfinishedColor = (program.unfinished) ? 'class="red"' : '';
-        let specialText = String(program.special) === '' ? '' : ' (' + program.special + ')';
-        name = '<a ' + unfinishedColor + ' href="http://franciscus.pbworks.com/w/page/' + program.name + '">' + name + '</a>';
-        document.getElementById(i + 1 + 'eName').innerHTML = name + specialText;
-        document.getElementById(i + 1 + 'eType').innerHTML = program.type.join(', ');
-        document.getElementById(i + 1 + 'eLoca').innerHTML = (!program.location) ? '' :
-            //'<img src="http://franciscus.pbworks.com/f/' + program.location[0].toString().toLowerCase() + '.png" alt="" title="' + program.location + '" height="18" width="18"> ' + program.location;
-            '<img src="src/' + program.location[0].toString().toLowerCase() + '.png" alt="" title="' + program.location + '" height="18" width="18"> ' + program.location.join(', ');
-        let eWhen = (program.date[0]) ? program.date : '-- / ----';
-        document.getElementById(i + 1 + 'eWhen').innerHTML =
-            // '<img src="http://franciscus.pbworks.com/f/wanneer.png" alt="" title="Wanneer" height="18" width="18"> ' + eWhen;
-            '<img src="src/wanneer.png" alt="" title="Wanneer" height="18" width="18"> ' + eWhen;
-    }
-
-    document.getElementById('found').innerHTML = foundPrograms.length; // set #results found
-
-    // show page markers
-    for (let j = 1; j <= 10; j++) { // max 10 page markers
-        if (foundPrograms.length - ((j - 1) * itemsPerPage) > 0) { // if that page has programs
-            if (j === page) { // to set and reset the boldness of the current page
-                document.getElementById(j.toString()).innerHTML = "<b><u>[" + j + "]</u></b>";
-            } else {
-                document.getElementById(j.toString()).innerHTML = "<span>[" + j + "]</span>";
-            }
-        } else { // hide the page marker if the page is empty
-            document.getElementById(j.toString()).innerHTML = " "; // invisible char for vertical spacing(alt+255)
-        }
-    }
-}
-
-// show the correct value of the slider-range
-function showValue(newValue) {
-    //years = Math.floor(newValue / 12);
-    //months = newValue % 12;
-    //document.getElementById("range").innerHTML = years + " jr, " + months + " mnd"; // output
-    if (newValue === 1) {
-        document.getElementById('range').innerHTML = newValue + ' maand'; // output single
-    } else {
-        document.getElementById('range').innerHTML = newValue + ' maanden'; // output
-    }
-}
-
-// select all checkboxes with the same name (type/location)
-function checkboxToggle(source, name) {
-    let checkboxes = document.getElementsByName(name);
-    for (let i = 0, n = checkboxes.length; i < n; i++) {
-        checkboxes[i].checked = source.checked;
-    }
-}
-
-//</script>
-
-//<script>/*2*/// search for the programs
+// search for the programs
 function search(page = 1) {
     // new type-input
     let selectedTypes = [];
@@ -189,6 +122,69 @@ function search(page = 1) {
     // show the result
     showPrograms(foundPrograms, page);
 }
+//</script>
+
+//<script>/*1*/// display the programs with their values
+function showPrograms(foundPrograms, page) {
+    if (!foundPrograms) {
+        return;
+    }
+
+    // show the programs on this page
+    let skipped = 0;
+    for (let i = 0; i < itemsPerPage; i++) {
+        let program = foundPrograms[i + ((page - 1) * itemsPerPage)];
+        if (!program) {
+            skipped++;
+            return;
+        }
+        let name = ((i + 1) + ((page - 1) * itemsPerPage)) + '. ' + program.name;
+        let unfinishedColor = (program.unfinished) ? 'class="red"' : '';
+        let specialText = String(program.special) === '' ? '' : ' (' + program.special + ')';
+        name = '<a ' + unfinishedColor + ' href="http://franciscus.pbworks.com/w/page/' + program.name + '">' + name + '</a>';
+        document.getElementById(i + 1 + 'eName').innerHTML = name + specialText;
+        document.getElementById(i + 1 + 'eType').innerHTML = program.type.join(', ');
+        document.getElementById(i + 1 + 'eLoca').innerHTML = (!program.location) ? '' :
+            //'<img src="http://franciscus.pbworks.com/f/' + program.location[0].toString().toLowerCase() + '.png" alt="" title="' + program.location + '" height="18" width="18"> ' + program.location;
+            '<img src="src/' + program.location[0].toString().toLowerCase() + '.png" alt="" title="' + program.location + '" height="18" width="18"> ' + program.location.join(', ');
+        let eWhen = (program.date[0]) ? program.date : '-- / ----';
+        document.getElementById(i + 1 + 'eWhen').innerHTML =
+            // '<img src="http://franciscus.pbworks.com/f/wanneer.png" alt="" title="Wanneer" height="18" width="18"> ' + eWhen;
+            '<img src="src/wanneer.png" alt="" title="Wanneer" height="18" width="18"> ' + eWhen;
+    }
+
+    document.getElementById('found').innerHTML = foundPrograms.length; // set #results found
+
+    // show page markers
+    for (let j = 1; j <= 10; j++) { // max 10 page markers
+        if (foundPrograms.length - ((j - 1) * itemsPerPage) > 0) { // if that page has programs
+            if (j === page) { // to set and reset the boldness of the current page
+                document.getElementById(j.toString()).innerHTML = "<b><u>[" + j + "]</u></b>";
+            } else {
+                document.getElementById(j.toString()).innerHTML = "<span>[" + j + "]</span>";
+            }
+        } else { // hide the page marker if the page is empty
+            document.getElementById(j.toString()).innerHTML = " "; // invisible char for vertical spacing(alt+255)
+        }
+    }
+}
+
+// show the correct value of the slider-range
+function showValue(newValue) {
+    if (newValue === 1) {
+        document.getElementById('range').innerHTML = newValue + ' maand';
+    } else {
+        document.getElementById('range').innerHTML = newValue + ' maanden';
+    }
+}
+
+// select all checkboxes with the same name (type/location)
+function checkboxToggle(source, name) {
+    let checkboxes = document.getElementsByName(name);
+    for (let i = 0, n = checkboxes.length; i < n; i++) {
+        checkboxes[i].checked = source.checked;
+    }
+}
 
 // calculate difference in months with current time
 function calculateDifference(programDate) {
@@ -198,7 +194,7 @@ function calculateDifference(programDate) {
 
     // get today value
     let today = new Date();
-    let mm = today.getMonth() + 1; //January is 0!
+    let mm = today.getMonth() + 1; // January is 0!
     let yyyy = today.getFullYear();
 
     let whenResult = programDate.split("/");
