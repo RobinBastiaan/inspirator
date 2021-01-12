@@ -75,7 +75,7 @@ function showPrograms(foundPrograms, page) {
         }
         let name = ((i + 1) + ((page - 1) * itemsPerPage)) + '. ' + program.name;
         let unfinishedColor = (program.unfinished) ? 'class="red"' : '';
-        let specialText = program.special != '' ? ' (' + program.special + ')' : '';
+        let specialText = String(program.special) === '' ? '' : ' (' + program.special + ')';
         name = '<a ' + unfinishedColor + ' href="http://franciscus.pbworks.com/w/page/' + program.name + '">' + name + '</a>';
         document.getElementById(i + 1 + 'eName').innerHTML = name + specialText;
         document.getElementById(i + 1 + 'eType').innerHTML = program.type.join(', ');
@@ -207,7 +207,7 @@ function calculateDifference(programDate) {
 }
 
 // initial function calls and eventListeners
-window.addEventListener("DOMContentLoaded", function (event) {
+window.addEventListener("DOMContentLoaded", function () {
     showValue(repeat); // initial slider-range
     search(1); // initial programs
 
