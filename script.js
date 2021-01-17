@@ -150,7 +150,7 @@ function showPrograms(foundPrograms, page) {
         document.getElementById(i + 1 + 'eType').innerHTML = program.type.join(', ');
         document.getElementById(i + 1 + 'eLoca').innerHTML = (!program.location) ? '' :
             //'<img src="http://franciscus.pbworks.com/f/' + program.location[0].toString().toLowerCase() + '.png" alt="" title="' + program.location + '" height="18" width="18"> ' + program.location;
-            '<img src="src/' + program.location[0].toString().toLowerCase() + '.png" alt="" title="' + program.location + '" height="18" width="18"> ' + program.location.join(', ');
+            '<img src="src/' + program.location[0].toString().toLowerCase() + '.png" alt="" title="' + program.location.join(', ') + '" height="18" width="18"> ' + program.location.join(', ');
         let eWhen = (program.date[0]) ? program.date : '-- / ----';
         document.getElementById(i + 1 + 'eWhen').innerHTML =
             // '<img src="http://franciscus.pbworks.com/f/wanneer.png" alt="" title="Wanneer" height="18" width="18"> ' + eWhen;
