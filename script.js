@@ -131,13 +131,17 @@ function showPrograms(foundPrograms, page) {
     }
 
     // show the programs on this page
-    let skipped = 0;
     for (let i = 0; i < itemsPerPage; i++) {
         let program = foundPrograms[i + ((page - 1) * itemsPerPage)];
-        if (!program) {
-            skipped++;
-            return;
+
+        if (!program) { // reset this entry
+            document.getElementById(i + 1 + 'eName').innerHTML = ((i + 1) + ((page - 1) * itemsPerPage)) + '. Geen resultaat.';
+            document.getElementById(i + 1 + 'eType').innerHTML = '';
+            document.getElementById(i + 1 + 'eLoca').innerHTML = '';
+            document.getElementById(i + 1 + 'eWhen').innerHTML = '';
+            continue;
         }
+
         let name = ((i + 1) + ((page - 1) * itemsPerPage)) + '. ' + program.name;
         let unfinishedColor = (program.unfinished) ? 'class="red"' : '';
         let specialText = String(program.special) === '' ? '' : ' (' + program.special + ')';
@@ -179,10 +183,10 @@ function showValue(newValue) {
 }
 
 // select all checkboxes with the same name (type/location)
-function checkboxToggle(source, name) {
-    let checkboxes = document.getElementsByName(name);
+function checkboxToggle(e) {
+    let checkboxes = document.getElementsByName(e.name);
     for (let i = 0, n = checkboxes.length; i < n; i++) {
-        checkboxes[i].checked = source.checked;
+        checkboxes[i].checked = e.checked;
     }
 }
 
@@ -213,7 +217,7 @@ window.addEventListener("DOMContentLoaded", function () {
     let checkAll = document.getElementsByClassName('check-all');
     for (let i = 0; i < checkAll.length; i++) {
         checkAll[i].addEventListener('click', function () {
-            checkboxToggle(this, this.name);
+            checkboxToggle(this);
         });
     }
 
