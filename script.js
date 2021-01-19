@@ -44,10 +44,10 @@ function getProgram() {
 
         for (let j = 0; j <= 5; j++) {
             if (j === 0 || j === 5) { // only columns 1 to 4 need to have the split separator
-                valueToPush[j] = children.children[i].children[j].innerHTML.trim().replace('&amp;', '&');
+                valueToPush[j] = sanitizeInput(children.children[i].children[j].innerHTML);
             } else {
                 valueToPush[j] = children.children[i].children[j].innerHTML.split(',').map(function (item) {
-                    return item.trim().replace('&amp;', '&');
+                    return sanitizeInput(item);
                 });
             }
         }
@@ -56,6 +56,11 @@ function getProgram() {
     }
 
     return programArray;
+}
+
+// to make sure some input transformations are correct
+function sanitizeInput(input) {
+    return input.trim().replace('&amp;', '&').replace('&nbsp;', '');
 }
 
 // search for the programs
@@ -143,7 +148,7 @@ function showPrograms(foundPrograms, page) {
         }
 
         let name = ((i + 1) + ((page - 1) * itemsPerPage)) + '. ' + program.name;
-        let unfinishedColor = (program.unfinished) ? 'class="red"' : '';
+        let unfinishedColor = program.unfinished ? 'class="red"' : '';
         let specialText = String(program.special) === '' ? '' : ' (' + program.special + ')';
         name = '<a ' + unfinishedColor + ' href="http://franciscus.pbworks.com/w/page/' + program.name + '">' + name + '</a>';
         document.getElementById(i + 1 + 'eName').innerHTML = name + specialText;
