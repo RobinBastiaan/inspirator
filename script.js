@@ -112,7 +112,7 @@ function search(page = 1) {
         if (!red && program.unfinished) {
             return;
         }
-        if (calculateDifference(program.date[program.date.length - 1]) < when) { // check if the program has right date
+        if (calculateDifference(program.date[program.date.length - 1]) < when && program.date[0] !== '*') { // check if the program has right date
             return;
         }
 
