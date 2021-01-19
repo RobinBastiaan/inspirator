@@ -91,9 +91,8 @@ function search(page = 1) {
     let red = document.querySelector('input[value="red"]').checked;
 
     // cycle through all programs and only add those that match the search parameters
-    foundPrograms = []; // reset values
     let programs = getProgram();
-    programs.forEach(function (program) {
+    foundPrograms = programs.filter(function (program) {
         if (!selectedTypes.some(value => program.type.includes(value))) {
             return;
         }
@@ -116,7 +115,7 @@ function search(page = 1) {
             return;
         }
 
-        foundPrograms.push(program);
+        return true;
     });
 
     // sort the results by date
