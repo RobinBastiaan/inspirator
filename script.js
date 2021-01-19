@@ -164,7 +164,7 @@ function showPrograms(foundPrograms, page) {
     document.getElementById('found').innerHTML = foundPrograms.length; // set #results found
 
     // show page markers
-    for (let j = 1; j <= 10; j++) { // max 10 page markers
+    for (let j = 1; j <= 10; j++) { // max page markers
         if (foundPrograms.length - ((j - 1) * itemsPerPage) > 0) { // if that page has programs
             if (j === page) { // to set and reset the boldness of the current page
                 document.getElementById(j.toString()).innerHTML = "<b><u>[" + j + "]</u></b>";

@@ -9,7 +9,8 @@
     background: #fccf2d;
     margin: 15px auto;
     padding: 10px 5px;
-    width: 800px;
+    min-width:800px;
+    max-width: 945px;
     overflow: hidden;
     border: 4px solid #ffb700;
     color: #444;
@@ -22,6 +23,10 @@
     padding: 7px 0 !important;
     width: 390px;
     height: 430px;
+}
+
+.panel-box__wide {
+    width: calc(100% - 410px);
 }
 
 .panel-box__title {
