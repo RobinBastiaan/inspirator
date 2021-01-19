@@ -139,7 +139,7 @@ function showPrograms(foundPrograms, page) {
         let program = foundPrograms[i + ((page - 1) * itemsPerPage)];
 
         if (!program) { // reset this entry
-            document.getElementById(i + 1 + 'eName').innerHTML = ((i + 1) + ((page - 1) * itemsPerPage)) + '. Geen resultaat.';
+            document.getElementById(i + 1 + 'eName').innerHTML = ((i + 1) + ((page - 1) * itemsPerPage)) + '. Geen resultaat.<br><br>';
             document.getElementById(i + 1 + 'eType').innerHTML = '';
             document.getElementById(i + 1 + 'eLoca').innerHTML = '';
             document.getElementById(i + 1 + 'eWhen').innerHTML = '';
