@@ -228,7 +228,7 @@ window.addEventListener("DOMContentLoaded", function () {
     let pages = document.getElementsByClassName('pages');
     for (let i = 0; i < pages.length; i++) {
         pages[i].addEventListener('click', function () {
-            showPrograms(foundPrograms, this.id);
+            showPrograms(foundPrograms, parseInt(this.id));
         });
     }
 });
