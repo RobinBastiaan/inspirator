@@ -11,4 +11,4 @@ As said, this project is build to be used on the PBworks platform. This platform
 - When editing a PBworks page, all plugins are not executed. This allows the source table to be hidden via CSS for a clean and easy way for users to edit it.
 
 ## Preview
-![Inspirator](https://user-images.githubusercontent.com/38226878/103142725-84e76600-4708-11eb-8447-cc29640b8176.JPG)
+![Inspirator Preview](https://user-images.githubusercontent.com/38226878/105246930-3ea0ed80-5b74-11eb-9d5b-46cd047adb76.png)
