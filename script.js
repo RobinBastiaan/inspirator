@@ -2,7 +2,6 @@
 //<script>/*0*/// Global initial values
 let foundPrograms = [];
 const repeat = 24;
-const itemsPerPage = 6;
 const types = {
     'creatief': 'Creatief',
     'sport': 'Sport & Spel',
@@ -64,7 +63,7 @@ function sanitizeInput(input) {
 }
 
 // search for the programs
-function search(page = 1) {
+function search() {
     // new type-input
     let selectedTypes = [];
     for (let key in types) {
@@ -92,7 +91,7 @@ function search(page = 1) {
 
     // cycle through all programs and only add those that match the search parameters
     let programs = getProgram();
-    foundPrograms = programs.filter(function (program) {
+    foundPrograms = programs.filter((program) => {
         if (!selectedTypes.some(value => program.type.includes(value))) {
             return;
         }
@@ -119,71 +118,69 @@ function search(page = 1) {
     });
 
     // sort the results by date
-    foundPrograms.sort(function (a, b) {
+    foundPrograms.sort((a, b) => {
         return parseFloat(calculateDifference(b['date'][b['date'].length - 1])) - parseFloat(calculateDifference(a['date'][a['date'].length - 1]))
     });
 
     // show the result
-    showPrograms(foundPrograms, page);
+    showPrograms(foundPrograms);
 }
+
 //</script>
 
 //<script>/*1*/// display the programs with their values
-function showPrograms(foundPrograms, page) {
+function showPrograms(foundPrograms) {
+    let resultsFound = foundPrograms.length;
+    let page = document.getElementById('result-wrapper');
+    page.textContent = ''; // clear element
+
     if (!foundPrograms) {
         return;
     }
 
     // show the programs on this page
-    for (let i = 0; i < itemsPerPage; i++) {
-        let program = foundPrograms[i + ((page - 1) * itemsPerPage)];
+    foundPrograms.forEach(e => {
+        let programLink = document.createElement('a');
+        programLink.innerHTML = e.name;
+        programLink.href = 'http://franciscus.pbworks.com/w/page/' + e.name;
+        if (e.unfinished) programLink.classList.add('red');
 
-        if (!program) { // reset this entry
-            document.getElementById(i + 1 + 'eName').innerHTML = ((i + 1) + ((page - 1) * itemsPerPage)) + '. Geen resultaat.<br><br>';
-            document.getElementById(i + 1 + 'eType').innerHTML = '';
-            document.getElementById(i + 1 + 'eLoca').innerHTML = '';
-            document.getElementById(i + 1 + 'eWhen').innerHTML = '';
-            continue;
-        }
+        let programSpecialText = document.createElement('span');
+        programSpecialText.append(String(e.special) === '' ? '' : ' (' + e.special + ')');
+        programSpecialText.append(e.type.join(', '));
 
-        let name = ((i + 1) + ((page - 1) * itemsPerPage)) + '. ' + program.name;
-        let unfinishedColor = program.unfinished ? 'class="red"' : '';
-        let specialText = String(program.special) === '' ? '' : ' (' + program.special + ')';
-        name = '<a ' + unfinishedColor + ' href="http://franciscus.pbworks.com/w/page/' + program.name + '">' + name + '</a>';
-        document.getElementById(i + 1 + 'eName').innerHTML = name + specialText;
-        document.getElementById(i + 1 + 'eType').innerHTML = program.type.join(', ');
-        document.getElementById(i + 1 + 'eLoca').innerHTML = (!program.location) ? '' :
-            //'<img src="http://franciscus.pbworks.com/f/' + program.location[0].toString().toLowerCase() + '.png" alt="" title="' + program.location + '" height="18" width="18"> ' + program.location;
-            '<img src="src/' + program.location[0].toString().toLowerCase() + '.png" alt="" title="' + program.location.join(', ') + '" height="18" width="18"> ' + program.location.join(', ');
-        let eWhen = (program.date[0]) ? program.date : '-- / ----';
-        document.getElementById(i + 1 + 'eWhen').innerHTML =
-            // '<img src="http://franciscus.pbworks.com/f/wanneer.png" alt="" title="Wanneer" height="18" width="18"> ' + eWhen;
-            '<img src="src/wanneer.png" alt="" title="Wanneer" height="18" width="18"> ' + eWhen;
-    }
+        let programLocation = document.createElement('img');
+        programLocation.setAttribute('src', 'src/' + e.location[0].toString().toLowerCase() + '.png'); // http://franciscus.pbworks.com/f/' + program.location[0].toString().toLowerCase() + '.png
+        programLocation.setAttribute('alt', e.location.join(', '));
+        programLocation.setAttribute('title', e.location.join(', '));
+        programLocation.setAttribute('width', '18');
+        programLocation.setAttribute('height', '18');
 
-    document.getElementById('found').innerHTML = foundPrograms.length; // set #results found
+        let programWhen = document.createElement('img');
+        let eWhen = (e.date[0]) ? e.date : '-- / ----';
+        programWhen.setAttribute('src', 'src/wanneer.png'); // http://franciscus.pbworks.com/f/wanneer.png
+        programWhen.setAttribute('alt', 'Wanneer');
+        programWhen.setAttribute('title', 'Wanneer');
+        programWhen.setAttribute('width', '18');
+        programWhen.setAttribute('height', '18');
 
-    // show page markers
-    for (let j = 1; j <= 10; j++) { // max page markers
-        if (foundPrograms.length - ((j - 1) * itemsPerPage) > 0) { // if that page has programs
-            if (j === page) { // to set and reset the boldness of the current page
-                document.getElementById(j.toString()).innerHTML = "<b><u>[" + j + "]</u></b>";
-            } else {
-                document.getElementById(j.toString()).innerHTML = "<span>[" + j + "]</span>";
-            }
-        } else { // hide the page marker if the page is empty
-            document.getElementById(j.toString()).innerHTML = " "; // invisible char for vertical spacing(alt+255)
-        }
-    }
+        let programDiv = document.createElement('div');
+        programDiv.append(programLink);
+        programDiv.append(programSpecialText);
+        programDiv.append(programLocation);
+        programDiv.append(programWhen);
+        programWhen.append('asdf');
+
+        page.append(programDiv);
+    });
+
+    document.getElementById('found').innerHTML = resultsFound;
 }
 
 // show the correct value of the slider-range
-function showValue(newValue) {
-    if (newValue === 1) {
-        document.getElementById('range').innerHTML = newValue + ' maand';
-    } else {
-        document.getElementById('range').innerHTML = newValue + ' maanden';
-    }
+function showSliderValue(newValue) {
+    let monthText = newValue === '1' ? ' maand' : ' maanden';
+    document.getElementById('range').innerHTML = newValue + monthText;
 }
 
 // select all checkboxes with the same name (type/location)
@@ -210,24 +207,24 @@ function calculateDifference(programDate) {
 }
 
 // initial function calls and eventListeners
-window.addEventListener("DOMContentLoaded", function () {
-    showValue(repeat); // initial slider-range
-    search(1); // initial programs
+window.addEventListener("DOMContentLoaded", () => {
+    showSliderValue(repeat); // initial slider-range
+    search(); // initial programs
 
-    document.getElementById('search').addEventListener('click', function () {
-        search(1)
+    document.getElementById('search').addEventListener('click', () => {
+        search()
     });
 
     let checkAll = document.getElementsByClassName('check-all');
     for (let i = 0; i < checkAll.length; i++) {
-        checkAll[i].addEventListener('click', function () {
+        checkAll[i].addEventListener('click', () => {
             checkboxToggle(this);
         });
     }
 
     let pages = document.getElementsByClassName('pages');
     for (let i = 0; i < pages.length; i++) {
-        pages[i].addEventListener('click', function () {
+        pages[i].addEventListener('click', () => {
             showPrograms(foundPrograms, parseInt(this.id));
         });
     }
