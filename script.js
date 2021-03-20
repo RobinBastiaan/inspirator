@@ -21,6 +21,7 @@ const locations = {
     'anders': 'Anders',
 };
 let programs = '';
+let programIndex = new Map();
 
 class programClass {
     constructor(id, name, location, type, date, special, unfinished) {
@@ -67,16 +68,20 @@ class programClass {
 }
 
 function show(id) {
-    document.getElementById(id).classList.remove('program__hidden');
+    if (programIndex.has(id)) {
+        programIndex.get(id).classList.remove('program__hidden');
+    }
 }
 
 function hide(id) {
-    document.getElementById(id).classList.add('program__hidden');
+    if (programIndex.has(id)) {
+        programIndex.get(id).classList.add('program__hidden');
+    }
 }
 
 // get all programs given in the html
 function getProgram() {
-    let children = document.getElementById("source-table").children[0];
+    let children = document.getElementById('source-table').children[0];
     let len = children.childElementCount;
     let programArray = [];
 
@@ -195,9 +200,14 @@ function buildPrograms(programs) {
 
     programs.forEach(e => {
         htmlString += e.html;
+        // TODO fill map
     });
 
     document.getElementById('result-wrapper').innerHTML = htmlString;
+
+    programs.forEach(e => {
+        programIndex.set(e.id, document.getElementById(e.id));
+    });
 }
 
 // show the correct value of the slider-range
