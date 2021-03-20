@@ -131,8 +131,7 @@ function search() {
 //<script>/*1*/// display the programs with their values
 function showPrograms(foundPrograms) {
     let resultsFound = foundPrograms.length;
-    let page = document.getElementById('result-wrapper');
-    page.textContent = ''; // clear element
+    let htmlString = '';
 
     if (!foundPrograms) {
         return;
@@ -140,40 +139,31 @@ function showPrograms(foundPrograms) {
 
     // show the programs on this page
     foundPrograms.forEach(e => {
-        let programLink = document.createElement('a');
-        programLink.innerHTML = e.name;
-        programLink.href = 'http://franciscus.pbworks.com/w/page/' + e.name;
-        if (e.unfinished) programLink.classList.add('red');
-
-        let programSpecialText = document.createElement('span');
-        programSpecialText.append(String(e.special) === '' ? '' : ' (' + e.special + ')');
-        programSpecialText.append(e.type.join(', '));
-
-        let programLocation = document.createElement('img');
-        programLocation.setAttribute('src', 'src/' + e.location[0].toString().toLowerCase() + '.png'); // http://franciscus.pbworks.com/f/' + program.location[0].toString().toLowerCase() + '.png
-        programLocation.setAttribute('alt', e.location.join(', '));
-        programLocation.setAttribute('title', e.location.join(', '));
-        programLocation.setAttribute('width', '18');
-        programLocation.setAttribute('height', '18');
-
-        let programWhen = document.createElement('img');
+        let classRed = e.unfinished ? 'class="red"' : '';
+        let programSpecialText = String(e.special) === '' ? '' : ' (' + e.special + ')';
         let eWhen = (e.date[0]) ? e.date : '-- / ----';
-        programWhen.setAttribute('src', 'src/wanneer.png'); // http://franciscus.pbworks.com/f/wanneer.png
-        programWhen.setAttribute('alt', 'Wanneer');
-        programWhen.setAttribute('title', 'Wanneer');
-        programWhen.setAttribute('width', '18');
-        programWhen.setAttribute('height', '18');
 
-        let programDiv = document.createElement('div');
-        programDiv.append(programLink);
-        programDiv.append(programSpecialText);
-        programDiv.append(programLocation);
-        programDiv.append(programWhen);
-        programWhen.append('asdf');
+        // http://franciscus.pbworks.com/f/' + program.location[0].toString().toLowerCase() + '.png
+        // http://franciscus.pbworks.com/f/wanneer.png
+        htmlString += `
+            <div class="inspirator">
+                <a ${classRed} href="http://franciscus.pbworks.com/w/page/${e.name}">
+                    ${e.name} ${programSpecialText}
+                </a>`;
 
-        page.append(programDiv);
+                e.location.forEach(location => {
+                    htmlString += `<img alt="${location}" title="${location}" src="src/${location.toString().toLowerCase()}.png" width="18" height="18"> ${location} `;
+                });
+
+                e.type.forEach(type => {
+                    htmlString += `<img alt="${type}" title="${type}" src="src/${type.toString().toLowerCase()}.png" width="18" height="18"> ${type} `;
+                });
+
+                htmlString += `<img alt="${e.location.join(', ')}" title="${e.location.join(', ')}" src="src/wanneer.png" width="18" height="18"> ${eWhen}
+            </div>`;
     });
 
+    document.getElementById('result-wrapper').innerHTML = htmlString;
     document.getElementById('found').innerHTML = resultsFound;
 }
 
