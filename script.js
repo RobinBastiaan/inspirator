@@ -20,16 +20,58 @@ const locations = {
     'online': 'Online',
     'anders': 'Anders',
 };
+let programs = '';
 
 class programClass {
-    constructor(name, location, type, date, special, unfinished) {
+    constructor(id, name, location, type, date, special, unfinished) {
+        this.id = 'prog' + id;
         this.name = name;
         this.location = location;
         this.type = type;
         this.date = date;
         this.special = special;
         this.unfinished = !!unfinished;
+        this.html = this.buildHtml();
     }
+
+    buildHtml() {
+        let classRed = this.unfinished ? 'class="red"' : '';
+        let programSpecialText = String(this.special) === '' ? '' : ' (' + this.special + ')';
+        let eWhen = (this.date[0]) ? this.date : '-- / ----';
+
+        // http://franciscus.pbworks.com/f/' + program.location[0].toString().toLowerCase() + '.png
+        // http://franciscus.pbworks.com/f/wanneer.png
+        let htmlString = `
+            <div id="${this.id}" class="inspirator">
+                <a ${classRed} href="http://franciscus.pbworks.com/w/page/${this.name}">
+                    ${this.name} ${programSpecialText}
+                </a>`;
+
+                this.location.forEach(location => {
+                    if (location) {
+                        htmlString += `<img alt="${location}" title="${location}" src="src/${location.toString().toLowerCase()}.png" width="18" height="18"> ${location} `;
+                    }
+                });
+
+                this.type.forEach(type => {
+                    if (type) {
+                        htmlString += `<img alt="${type}" title="${type}" src="src/${type.split(' ')[0].toString().toLowerCase()}.svg" width="18" height="18"> ${type} `;
+                    }
+                });
+
+                htmlString += `<img alt="${this.location.join(', ')}" title="${this.location.join(', ')}" src="src/wanneer.png" width="18" height="18"> ${eWhen}
+            </div>`;
+
+        return htmlString;
+    }
+}
+
+function show(id) {
+    document.getElementById(id).classList.remove('program__hidden');
+}
+
+function hide(id) {
+    document.getElementById(id).classList.add('program__hidden');
 }
 
 // get all programs given in the html
@@ -50,7 +92,7 @@ function getProgram() {
                 });
             }
         }
-        let program = new programClass(...valueToPush);
+        let program = new programClass(i, ...valueToPush);
         programArray.push(program);
     }
 
@@ -64,7 +106,7 @@ function sanitizeInput(input) {
 
 // search for the programs
 function search() {
-    // new type-input
+    // region new type-input
     let selectedTypes = [];
     for (let key in types) {
         if (document.querySelector('input[value="' + key + '"]').checked) {
@@ -88,9 +130,9 @@ function search() {
     let never = document.querySelector('input[value="never"]').checked;
     let always = document.querySelector('input[value="always"]').checked;
     let red = document.querySelector('input[value="red"]').checked;
+    // endregion
 
     // cycle through all programs and only add those that match the search parameters
-    let programs = getProgram();
     foundPrograms = programs.filter((program) => {
         if (!selectedTypes.some(value => program.type.includes(value))) {
             return;
@@ -131,40 +173,31 @@ function search() {
 //<script>/*1*/// display the programs with their values
 function showPrograms(foundPrograms) {
     let resultsFound = foundPrograms.length;
-    let htmlString = '';
 
     if (!foundPrograms) {
         return;
     }
 
     // show the programs on this page
-    foundPrograms.forEach(e => {
-        let classRed = e.unfinished ? 'class="red"' : '';
-        let programSpecialText = String(e.special) === '' ? '' : ' (' + e.special + ')';
-        let eWhen = (e.date[0]) ? e.date : '-- / ----';
+    programs.forEach(e => {
+        if (foundPrograms.includes(e)) {
+            show(e.id);
+        } else {
+            hide(e.id);
+        }
+    });
 
-        // http://franciscus.pbworks.com/f/' + program.location[0].toString().toLowerCase() + '.png
-        // http://franciscus.pbworks.com/f/wanneer.png
-        htmlString += `
-            <div class="inspirator">
-                <a ${classRed} href="http://franciscus.pbworks.com/w/page/${e.name}">
-                    ${e.name} ${programSpecialText}
-                </a>`;
+    document.getElementById('found').innerHTML = resultsFound;
+}
 
-                e.location.forEach(location => {
-                    htmlString += `<img alt="${location}" title="${location}" src="src/${location.toString().toLowerCase()}.png" width="18" height="18"> ${location} `;
-                });
+function buildPrograms(programs) {
+    let htmlString = '';
 
-                e.type.forEach(type => {
-                    htmlString += `<img alt="${type}" title="${type}" src="src/${type.split(' ')[0].toString().toLowerCase()}.svg" width="18" height="18"> ${type} `;
-                });
-
-                htmlString += `<img alt="${e.location.join(', ')}" title="${e.location.join(', ')}" src="src/wanneer.png" width="18" height="18"> ${eWhen}
-            </div>`;
+    programs.forEach(e => {
+        htmlString += e.html;
     });
 
     document.getElementById('result-wrapper').innerHTML = htmlString;
-    document.getElementById('found').innerHTML = resultsFound;
 }
 
 // show the correct value of the slider-range
@@ -197,8 +230,10 @@ function calculateDifference(programDate) {
 }
 
 // initial function calls and eventListeners
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener('DOMContentLoaded', () => {
     showSliderValue(repeat); // initial slider-range
+    programs = getProgram();
+    buildPrograms(programs);
     search(); // initial programs
 
     document.getElementById('search').addEventListener('click', () => {
@@ -209,13 +244,6 @@ window.addEventListener("DOMContentLoaded", () => {
     for (let i = 0; i < checkAll.length; i++) {
         checkAll[i].addEventListener('click', () => {
             checkboxToggle(this);
-        });
-    }
-
-    let pages = document.getElementsByClassName('pages');
-    for (let i = 0; i < pages.length; i++) {
-        pages[i].addEventListener('click', () => {
-            showPrograms(foundPrograms, parseInt(this.id));
         });
     }
 });

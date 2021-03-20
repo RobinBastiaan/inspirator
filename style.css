@@ -153,3 +153,7 @@
     content: attr(max);
     padding-left: 5px;
 }
+
+.program__hidden {
+    display: none;
+}
