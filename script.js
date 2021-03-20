@@ -156,7 +156,7 @@ function showPrograms(foundPrograms) {
                 });
 
                 e.type.forEach(type => {
-                    htmlString += `<img alt="${type}" title="${type}" src="src/${type.toString().toLowerCase()}.png" width="18" height="18"> ${type} `;
+                    htmlString += `<img alt="${type}" title="${type}" src="src/${type.split(' ')[0].toString().toLowerCase()}.svg" width="18" height="18"> ${type} `;
                 });
 
                 htmlString += `<img alt="${e.location.join(', ')}" title="${e.location.join(', ')}" src="src/wanneer.png" width="18" height="18"> ${eWhen}
