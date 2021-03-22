@@ -43,10 +43,10 @@ class programClass {
         // http://franciscus.pbworks.com/f/' + program.location[0].toString().toLowerCase() + '.png
         // http://franciscus.pbworks.com/f/wanneer.png
         let htmlString = `
-            <div id="${this.id}" class="inspirator">
-                <a ${classRed} href="http://franciscus.pbworks.com/w/page/${this.name}">
+            <a id="${this.id}" class="program" href="http://franciscus.pbworks.com/w/page/${this.name}">
+                <span ${classRed}>
                     ${this.name} ${programSpecialText}
-                </a>`;
+                </span><br>`;
 
                 this.location.forEach(location => {
                     if (location) {
@@ -61,7 +61,7 @@ class programClass {
                 });
 
                 htmlString += `<img alt="${this.location.join(', ')}" title="${this.location.join(', ')}" src="src/wanneer.png" width="18" height="18"> ${eWhen}
-            </div>`;
+            </a>`;
 
         return htmlString;
     }
@@ -203,7 +203,7 @@ function buildPrograms(programs) {
         // TODO fill map
     });
 
-    document.getElementById('result-wrapper').innerHTML = htmlString;
+    document.getElementById('program-container').innerHTML = htmlString;
 
     programs.forEach(e => {
         programIndex.set(e.id, document.getElementById(e.id));
