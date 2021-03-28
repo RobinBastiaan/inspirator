@@ -1,4 +1,4 @@
-<!-- The Script for the Inspirator -->
+//<!-- The Script for the Inspirator -->
 //<script>/*0*/// Global initial values
 let foundPrograms = [];
 const repeat = 24;
@@ -20,7 +20,14 @@ const locations = {
     'online': 'Online',
     'anders': 'Anders',
 };
-let programs = '';
+let programLocations = {};
+for (const property in locations) {
+    programLocations[property] = [];
+}
+let programs = {};
+for (const property in types) {
+    programs[property] = []; //{...programLocations};
+}
 let programIndex = new Map();
 
 class programClass {
@@ -43,20 +50,20 @@ class programClass {
         // http://franciscus.pbworks.com/f/' + program.location[0].toString().toLowerCase() + '.png
         // http://franciscus.pbworks.com/f/wanneer.png
         let htmlString = `
-            <a id="${this.id}" class="program" href="http://franciscus.pbworks.com/w/page/${this.name}">
-                <span ${classRed}><b>
-                    ${this.name} ${programSpecialText}
-                </b></span><br>`;
+            <a id="${this.id}" class="program" href="http://franciscus.pbworks.com/w/page/${this.name}">`;
+                htmlString += `<span ${classRed}><b>
+                            ${this.name} ${programSpecialText}
+                        </b></span><br>`;
 
                 this.location.forEach(location => {
                     if (location) {
-                        htmlString += `<span><img alt="${location}" title="${location}" src="src/${location.toString().toLowerCase()}.png"> ${location}</span> `;
+                        htmlString += `<img alt="${location}" title="${location}" src="src/${location.toString().toLowerCase()}.png"> `;
                     }
                 });
 
                 this.type.forEach(type => {
                     if (type) {
-                        htmlString += `<span><img alt="${type}" title="${type}" src="src/${type.split(' ')[0].toString().toLowerCase()}.svg"> ${type}</span> `;
+                        htmlString += `<img alt="${type}" title="${type}" src="src/${type.split(' ')[0].toString().toLowerCase()}.svg"> `;
                     }
                 });
 
@@ -99,9 +106,17 @@ function getProgram() {
         }
         let program = new programClass(i, ...valueToPush);
         programArray.push(program);
+
+        let programLocationKey = Object.keys(types).find(key => types[key] === program.type[0]);
+        if (typeof programLocationKey !== 'undefined') {
+            programs[programLocationKey].push(program);
+        }
     }
 
-    return programArray;
+    console.log(programArray);
+    console.log(programs);
+
+    return programs;
 }
 
 // to make sure some input transformations are correct
@@ -196,18 +211,33 @@ function showPrograms(foundPrograms) {
 }
 
 function buildPrograms(programs) {
-    let htmlString = '';
+    // let htmlString = '';
+    //
+    // programs.forEach(e => {
+    //     htmlString += e.html;
+    //     // TODO fill map
+    // });
+    //
+    // document.getElementById('program-container').innerHTML = htmlString;
+    //
+    // programs.forEach(e => {
+    //     programIndex.set(e.id, document.getElementById(e.id));
+    // });
 
-    programs.forEach(e => {
-        htmlString += e.html;
-        // TODO fill map
-    });
+    // NEW CODE
+    for (const programType in programs) {
+        console.log(programType);
+        for (const program of programs[programType]) {
+            console.log(program);
+            console.log('container-' + programType);
+            document.getElementById('container-' + programType).innerHTML += program.html;
+        }
+    }
 
-    document.getElementById('program-container').innerHTML = htmlString;
-
-    programs.forEach(e => {
-        programIndex.set(e.id, document.getElementById(e.id));
-    });
+    // programs.forEach(e => {
+    //     console.log(e);
+    //     document.getElementById(e.['container-' + e.type[0]]).innerHTML += e.html;
+    // });
 }
 
 // show the correct value of the slider-range
@@ -244,7 +274,7 @@ window.addEventListener('DOMContentLoaded', () => {
     showSliderValue(repeat); // initial slider-range
     programs = getProgram();
     buildPrograms(programs);
-    search(); // initial programs
+    // search(); // initial programs
 
     document.getElementById('search').addEventListener('click', () => {
         search()

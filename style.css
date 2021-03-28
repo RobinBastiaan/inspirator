@@ -23,6 +23,7 @@
     border-radius: 15px;
 }
 
+.programType,
 #program-container {
     display: flex;
     flex-wrap: wrap;
@@ -173,3 +174,29 @@
     content: attr(max);
     padding-left: 5px;
 }
+
+#programTable {
+    width: 100%;
+    display: flex;
+}
+
+.programColumn {
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
+.typeLogo {
+    background-color: #fccf2d;
+    padding: 0.5em;
+    border: white 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/*.program{*/
+/*    background-color: #fccf2d;*/
+/*    padding: 0.5em;*/
+/*    border: white 1px solid;*/
+/*}*/
