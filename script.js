@@ -44,23 +44,23 @@ class programClass {
         // http://franciscus.pbworks.com/f/wanneer.png
         let htmlString = `
             <a id="${this.id}" class="program" href="http://franciscus.pbworks.com/w/page/${this.name}">
-                <span ${classRed}>
+                <span ${classRed}><b>
                     ${this.name} ${programSpecialText}
-                </span><br>`;
+                </b></span><br>`;
 
                 this.location.forEach(location => {
                     if (location) {
-                        htmlString += `<img alt="${location}" title="${location}" src="src/${location.toString().toLowerCase()}.png" width="18" height="18"> ${location} `;
+                        htmlString += `<span><img alt="${location}" title="${location}" src="src/${location.toString().toLowerCase()}.png"> ${location}</span> `;
                     }
                 });
 
                 this.type.forEach(type => {
                     if (type) {
-                        htmlString += `<img alt="${type}" title="${type}" src="src/${type.split(' ')[0].toString().toLowerCase()}.svg" width="18" height="18"> ${type} `;
+                        htmlString += `<span><img alt="${type}" title="${type}" src="src/${type.split(' ')[0].toString().toLowerCase()}.svg"> ${type}</span> `;
                     }
                 });
 
-                htmlString += `<img alt="${this.location.join(', ')}" title="${this.location.join(', ')}" src="src/wanneer.png" width="18" height="18"> ${eWhen}
+                htmlString += `<span><img alt="${this.location.join(', ')}" title="${this.location.join(', ')}" src="src/wanneer.png"> ${eWhen}</span>
             </a>`;
 
         return htmlString;
