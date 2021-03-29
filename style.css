@@ -23,13 +23,7 @@
     border-radius: 15px;
 }
 
-.programType,
-#program-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    line-height: 1.8;
-}
+
 
 /* Class Selectors */
 
@@ -75,33 +69,7 @@
     color: #ff0000;
 }
 
-.program {
-    position: relative;
-    background: #fccf2d;
-    margin: 3px;
-    padding: 5px 10px;
-    width: 300px;
-    min-height: 75px;
-    overflow: hidden;
-    color: #444;
-    transition: 0.3s;
-}
 
-.program span {
-    margin-right: 10px;
-    white-space: nowrap;
-    height: 18px;
-}
-
-.program:hover {
-    background: #FEE9A0;
-    transition: 0.3s;
-    cursor: pointer;
-}
-
-.program__hidden {
-    display: none;
-}
 
 /* Element Selectors */
 
@@ -158,10 +126,7 @@
     width: 76px;
 }
 
-.program img {
-    height: 18px;
-    width: 18px;
-}
+
 
 /* Attribute Selectors */
 
@@ -175,6 +140,11 @@
     padding-left: 5px;
 }
 
+/* .programType
+{
+    padding:0 0.3em;
+}  */
+
 #programTable {
     width: 100%;
     display: flex;
@@ -183,20 +153,58 @@
 .programColumn {
     flex-grow: 1;
     flex-basis: 0;
+    border:1px solid white;
 }
 
 .typeLogo {
     background-color: #fccf2d;
-    padding: 0.5em;
-    border: white 1px solid;
+    padding: 0.5em;    
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    border-bottom: 3px solid white;
 }
 
-/*.program{*/
-/*    background-color: #fccf2d;*/
-/*    padding: 0.5em;*/
-/*    border: white 1px solid;*/
-/*}*/
+.typeLogo h3{
+    margin:0px;
+    line-height: 1;
+}
+
+.program {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    box-sizing: border-box;
+    background: #fccf2d;
+    padding: 0em 0.7em;
+    width: 100%;
+    overflow: hidden;
+    color: #444;
+    transition: 0.3s;
+    line-height: 1.7em;
+}
+
+.program span {    
+    white-space: nowrap;    
+}
+
+.program img {
+    height: 15px;
+    width: 15px;
+}
+
+.lastRow{
+    display: flex;
+    justify-content: space-between;
+}
+
+.program:hover {
+    background: #FEE9A0;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.program__hidden {
+    display: none;
+}
