@@ -28,6 +28,7 @@ let programs = {};
 for (const property in types) {
     programs[property] = []; //{...programLocations};
 }
+
 // let programIndex = new Map();
 
 class programClass {
@@ -228,10 +229,10 @@ function showSliderValue(newValue) {
 }
 
 // select all checkboxes with the same name (type/location)
-function checkboxToggle(e) {
-    let checkboxes = document.getElementsByName(e.name);
+function checkboxToggle(target) {
+    let checkboxes = document.getElementsByName(target.name);
     for (let i = 0, n = checkboxes.length; i < n; i++) {
-        checkboxes[i].checked = e.checked;
+        checkboxes[i].checked = target.checked;
     }
 }
 
@@ -263,8 +264,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
     let checkAll = document.getElementsByClassName('check-all');
     for (let i = 0; i < checkAll.length; i++) {
-        checkAll[i].addEventListener('click', () => {
-            checkboxToggle(this);
+        checkAll[i].addEventListener('click', (e) => {
+            checkboxToggle(e.target);
         });
     }
 });
