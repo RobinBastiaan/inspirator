@@ -2469,38 +2469,41 @@
                 </span>
             </h4>
 
-            <table>
-                <tr>
-                    <td>
-                        <label for="creatief">
-                            <input id="creatief" type="checkbox" name="type" checked value="creatief">Creatief
-                        </label><br>
-                        <label for="sport">
-                            <input id="sport" type="checkbox" name="type" checked value="sport">Sport & Spel
-                        </label><br>
-                        <label for="strategisch">
-                            <input id="strategisch" type="checkbox" name="type" checked value="strategisch">Strategisch
-                        </label><br>
-                        <label for="toneel">
-                            <input id="toneel" type="checkbox" name="type" checked value="toneel">Toneel
-                        </label>
-                    </td>
-                    <td>
-                        <label for="scoutingtechnieken">
-                            <input id="scoutingtechnieken" type="checkbox" name="type" checked value="scoutingtechnieken">Scoutingtechnieken
-                        </label><br>
-                        <label for="veilig">
-                            <input id="veilig" type="checkbox" name="type" checked value="veilig">Veilig & Gezond
-                        </label><br>
-                        <label for="thema">
-                            <input id="thema" type="checkbox" name="type" checked value="thema">Thema
-                        </label><br>
-                        <label for="korte">
-                            <input id="korte" type="checkbox" name="type" value="korte">Korte spelletjes
-                        </label>
-                    </td>
-                </tr>
-            </table>
+            <div class="checkbox-container">
+                <label class="label-checkbox">
+                    <input class="hidden-checkbox" type="checkbox" name="type" checked value="creatief">
+                    <img alt="Creatief" title="Creatief" src="src/creatief.svg">
+                </label>
+                <label class="label-checkbox">
+                    <input class="hidden-checkbox" type="checkbox" name="type" checked value="sport">
+                    <img alt="Sport & Spel" title="Sport & Spel" src="src/sport.svg">
+                </label>
+                <label class="label-checkbox">
+                    <input class="hidden-checkbox" type="checkbox" name="type" checked value="strategisch">
+                    <img alt="Strategisch" title="Strategisch" src="src/strategisch.svg">
+                </label>
+                <label class="label-checkbox">
+                    <input class="hidden-checkbox" type="checkbox" name="type" checked value="toneel">
+                    <img alt="Toneel" title="Toneel" src="src/toneel.svg">
+                </label>
+                <br>
+                <label class="label-checkbox">
+                    <input class="hidden-checkbox" type="checkbox" name="type" checked value="scoutingtechnieken">
+                    <img alt="Scoutingtechnieken" title="Scoutingtechnieken" src="src/scoutingtechnieken.svg">
+                </label>
+                <label class="label-checkbox">
+                    <input class="hidden-checkbox" type="checkbox" name="type" checked value="veilig">
+                    <img alt="Veilig & Gezond" title="Veilig & Gezond" src="src/veilig.svg">
+                </label>
+                <label class="label-checkbox" for="thema">
+                    <input id="thema" class="hidden-checkbox" type="checkbox" name="type" checked value="thema">
+                    <img alt="Thema" title="Thema" src="src/thema.svg">
+                </label>
+                <label class="label-checkbox">
+                    <input class="hidden-checkbox" type="checkbox" name="type" checked value="korte">
+                    <img alt="Korte spelletjes" title="Korte spelletjes" src="src/korte.svg">
+                </label>
+            </div>
         </section>
 
         <!-- Selection for program Loca(tion) -->
@@ -2512,7 +2515,7 @@
                     </label>
                 </span>
             </h4>
-            <table>
+            <table class="checkbox-container">
                 <tr>
                     <td><b>Ver weg</b></td>
                     <td><b>Dichtbij</b></td>
@@ -2520,27 +2523,33 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="bos">
-                            <input id="bos" type="checkbox" name="loca" checked value="bos">Bos
-                        </label><br>
-                        <label for="veld">
-                            <input id="veld" type="checkbox" name="loca" checked value="veld">Veld
+                        <label class="label-checkbox">
+                            <input class="hidden-checkbox" type="checkbox" name="loca" checked value="bos">
+                            <img alt="Bos" title="Bos" src="src/bos.png">
+                        </label>
+                        <label class="label-checkbox">
+                            <input class="hidden-checkbox" type="checkbox" name="loca" checked value="veld">
+                            <img alt="Veld" title="Veld" src="src/veld.png">
                         </label>
                     </td>
                     <td>
-                        <label for="clubhuis">
-                            <input id="clubhuis" type="checkbox" name="loca" checked value="clubhuis">Clubhuis
-                        </label><br>
-                        <label for="stad">
-                            <input id="stad" type="checkbox" name="loca" checked value="stad">Stad
+                        <label class="label-checkbox">
+                            <input class="hidden-checkbox" type="checkbox" name="loca" checked value="clubhuis">
+                            <img alt="Clubhuis" title="Clubhuis" src="src/clubhuis.png">
+                        </label>
+                        <label class="label-checkbox">
+                            <input class="hidden-checkbox" type="checkbox" name="loca" checked value="stad">
+                            <img alt="Stad" title="Stad" src="src/stad.png">
                         </label>
                     </td>
                     <td>
-                        <label for="online">
-                            <input id="online" type="checkbox" name="loca" checked value="online">Online
-                        </label><br>
-                        <label for="anders">
-                            <input id="anders" type="checkbox" name="loca" checked value="anders">Anders
+                        <label class="label-checkbox">
+                            <input class="hidden-checkbox" type="checkbox" name="loca" checked value="online">
+                            <img alt="Online" title="Online" src="src/online.png">
+                        </label>
+                        <label class="label-checkbox">
+                            <input class="hidden-checkbox" type="checkbox" name="loca" checked value="anders">
+                            <img alt="anders" title="anders" src="src/anders.png">
                         </label>
                     </td>
                 </tr>
@@ -2574,52 +2583,51 @@
     </article>
 
     <h4 id="found-container"><span id="found"></span> resultaten</h4>
-
     <div id="programTable">
         <div class="programColumn">
-            <div class="typeLogo"><img alt="Creatief" title="Creatief" src="src/creatief.svg" width="25" height="25">
+            <div class="typeLogo"><img alt="Creatief" title="Creatief" src="src/creatief.svg">
                 <h3>Creatief</h3>
             </div>
             <div id="container-creatief" class="programType"></div>
         </div>
         <div class="programColumn">
-            <div class="typeLogo"><img alt="Sport & Spel" title="Sport & Spel" src="src/sport.svg" width="25" height="25">
+            <div class="typeLogo"><img alt="Sport & Spel" title="Sport & Spel" src="src/sport.svg">
                 <h3>Sport & Spel</h3>
             </div>
             <div id="container-sport" class="programType"></div>
         </div>
         <div class="programColumn">
-            <div class="typeLogo"><img alt="Strategisch" title="Strategisch" src="src/strategisch.svg" width="25" height="25">
+            <div class="typeLogo"><img alt="Strategisch" title="Strategisch" src="src/strategisch.svg">
                 <h3>Strategisch</h3>
             </div>
             <div id="container-strategisch" class="programType"></div>
         </div>
         <div class="programColumn">
-            <div class="typeLogo"><img alt="Toneel" title="Toneel" src="src/toneel.svg" width="25" height="25">
+            <div class="typeLogo"><img alt="Toneel" title="Toneel" src="src/toneel.svg">
                 <h3>Toneel</h3>
             </div>
             <div id="container-toneel" class="programType"></div>
         </div>
         <div class="programColumn">
-            <div class="typeLogo"><img alt="Scoutingtechnieken" title="Scoutingtechnieken" src="src/scoutingtechnieken.svg" width="25" height="25">
+            <div class="typeLogo"><img alt="Scoutingtechnieken" title="Scoutingtechnieken" src="src/scoutingtechnieken.svg">
                 <h3>Scoutingtechnieken</h3>
             </div>
             <div id="container-scoutingtechnieken" class="programType"></div>
         </div>
         <div class="programColumn">
-            <div class="typeLogo"><img alt="Veilig & Gezond" title="Veilig & Gezond" src="src/veilig.svg" width="25" height="25">
+            <div class="typeLogo"><img alt="Veilig & Gezond" title="Veilig & Gezond" src="src/veilig.svg">
                 <h3>Veilig & Gezond</h3>
             </div>
             <div id="container-veilig" class="programType"></div>
         </div>
         <div class="programColumn">
-            <div class="typeLogo"><img alt="Thema" title="Thema" src="src/thema.svg" width="25" height="25">
+            <div class="typeLogo"><img alt="Thema" title="Thema" src="src/thema.svg">
                 <h3>Thema</h3>
             </div>
             <div id="container-thema" class="programType"></div>
         </div>
         <div class="programColumn">
-            <div class="typeLogo"><img alt="Korte spelletjes" title="Korte spelletjes" src="src/korte.svg" width="25" height="25">
+            <div class="typeLogo"><img alt="Korte spelletjes" title="Korte spelletjes" src="src/korte.svg">
                 <h3>Korte spelletjes</h3>
             </div>
             <div id="container-korte" class="programType"></div>
