@@ -258,14 +258,19 @@ window.addEventListener('DOMContentLoaded', () => {
     buildPrograms();
     search(); // initial programs
 
-    document.getElementById('search').addEventListener('click', () => {
-        search()
-    });
-
+    // add checkboxToggle event listeners
     let checkAll = document.getElementsByClassName('check-all');
     for (let i = 0; i < checkAll.length; i++) {
         checkAll[i].addEventListener('click', (e) => {
             checkboxToggle(e.target);
+        });
+    }
+
+    // add search event listeners
+    let clickableSearchElements = document.querySelectorAll("input");
+    for (let i = 0; i < clickableSearchElements.length; i++) {
+        clickableSearchElements[i].addEventListener('click', (e) => {
+            search();
         });
     }
 });
