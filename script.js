@@ -28,7 +28,7 @@ let programs = {};
 for (const property in types) {
     programs[property] = []; //{...programLocations};
 }
-let programIndex = new Map();
+// let programIndex = new Map();
 
 class programClass {
     constructor(id, name, location, type, date, special, unfinished) {
@@ -48,12 +48,10 @@ class programClass {
         let eWhen = (this.date[0]) ? this.date : '-- / ----';
         let htmlString;
 
-        // http://franciscus.pbworks.com/f/' + program.location[0].toString().toLowerCase() + '.png
-        // http://franciscus.pbworks.com/f/wanneer.png
         htmlString = `<a id="${this.id}" class="program" href="http://franciscus.pbworks.com/w/page/${this.name}">`;
         htmlString += `<span ${classRed}><b>${this.name} ${programSpecialText}</b></span><br>`;
         htmlString += `<span class="lastRow">`;
-        
+
         // location
         htmlString += `<span>`;
         this.location.forEach(location => {
@@ -62,7 +60,7 @@ class programClass {
             }
         });
         htmlString += `</span>`;
-        
+
         // date
         htmlString += `<span><img alt="${this.location.join(', ')}" title="${this.location.join(', ')}" src="src/wanneer.png"> ${eWhen}</span>`;
 
@@ -81,22 +79,23 @@ class programClass {
 }
 
 function show(id) {
-    if (programIndex.has(id)) {
-        programIndex.get(id).classList.remove('program__hidden');
-    }
+    // if (programIndex.has(id)) {
+    //     programIndex.get(id).classList.remove('program__hidden');
+    // }
+    document.getElementById(id).classList.remove('program__hidden');
 }
 
 function hide(id) {
-    if (programIndex.has(id)) {
-        programIndex.get(id).classList.add('program__hidden');
-    }
+    // if (programIndex.has(id)) {
+    //     programIndex.get(id).classList.add('program__hidden');
+    // }
+    document.getElementById(id).classList.add('program__hidden');
 }
 
 // get all programs given in the html
-function getProgram() {
+function setPrograms() {
     let children = document.getElementById('source-table').children[0];
     let len = children.childElementCount;
-    let programArray = [];
 
     for (let i = 1; i < len; i++) {
         let valueToPush = [];
@@ -111,18 +110,12 @@ function getProgram() {
             }
         }
         let program = new programClass(i, ...valueToPush);
-        programArray.push(program);
 
         let programLocationKey = Object.keys(types).find(key => types[key] === program.type[0]);
         if (typeof programLocationKey !== 'undefined') {
             programs[programLocationKey].push(program);
         }
     }
-
-    console.log(programArray);
-    console.log(programs);
-
-    return programs;
 }
 
 // to make sure some input transformations are correct
@@ -132,6 +125,8 @@ function sanitizeInput(input) {
 
 // search for the programs
 function search() {
+    foundPrograms = [];
+
     // region new type-input
     let selectedTypes = [];
     for (let key in types) {
@@ -159,36 +154,33 @@ function search() {
     // endregion
 
     // cycle through all programs and only add those that match the search parameters
-    foundPrograms = programs.filter((program) => {
-        if (!selectedTypes.some(value => program.type.includes(value))) {
-            return;
-        }
-        if (!selectedLocations.some(value => program.location.includes(value))) {
-            return;
-        }
-        if (!ever && program.date[0] && program.date[0] !== '*') {
-            return;
-        }
-        if (!never && !program.date[0] && program.date[0] !== '*') {
-            return;
-        }
-        if (!always && program.date[0] === '*') {
-            return;
-        }
-        if (!red && program.unfinished) {
-            return;
-        }
-        if (calculateDifference(program.date[program.date.length - 1]) < when && program.date[0] !== '*') { // check if the program has right date
-            return;
-        }
+    for (const programType in programs) {
+        for (const program of programs[programType]) {
+            if (!selectedTypes.some(value => program.type.includes(value))) {
+                continue;
+            }
+            if (!selectedLocations.some(value => program.location.includes(value))) {
+                continue;
+            }
+            if (!ever && program.date[0] && program.date[0] !== '*') {
+                continue;
+            }
+            if (!never && !program.date[0] && program.date[0] !== '*') {
+                continue;
+            }
+            if (!always && program.date[0] === '*') {
+                continue;
+            }
+            if (!red && program.unfinished) {
+                continue;
+            }
+            if (calculateDifference(program.date[program.date.length - 1]) < when && program.date[0] !== '*') { // check if the program has right date
+                continue;
+            }
 
-        return true;
-    });
-
-    // sort the results by date
-    foundPrograms.sort((a, b) => {
-        return parseFloat(calculateDifference(b['date'][b['date'].length - 1])) - parseFloat(calculateDifference(a['date'][a['date'].length - 1]))
-    });
+            foundPrograms.push(program);
+        }
+    }
 
     // show the result
     showPrograms(foundPrograms);
@@ -205,45 +197,28 @@ function showPrograms(foundPrograms) {
     }
 
     // show the programs on this page
-    programs.forEach(e => {
-        if (foundPrograms.includes(e)) {
-            show(e.id);
-        } else {
-            hide(e.id);
-        }
-    });
-
-    document.getElementById('found').innerHTML = resultsFound;
-}
-
-function buildPrograms(programs) {
-    // let htmlString = '';
-    //
-    // programs.forEach(e => {
-    //     htmlString += e.html;
-    //     // TODO fill map
-    // });
-    //
-    // document.getElementById('program-container').innerHTML = htmlString;
-    //
-    // programs.forEach(e => {
-    //     programIndex.set(e.id, document.getElementById(e.id));
-    // });
-
-    // NEW CODE
     for (const programType in programs) {
-        console.log(programType);
         for (const program of programs[programType]) {
-            console.log(program);
-            console.log('container-' + programType);
-            document.getElementById('container-' + programType).innerHTML += program.html;
+            if (foundPrograms.includes(program)) {
+                show(program.id);
+            } else {
+                hide(program.id);
+            }
         }
     }
 
-    // programs.forEach(e => {
-    //     console.log(e);
-    //     document.getElementById(e.['container-' + e.type[0]]).innerHTML += e.html;
-    // });
+    document.getElementById('found').innerHTML = (resultsFound ?? 0).toString();
+}
+
+// fill the program containers with program elements
+function buildPrograms() {
+    for (const programType in programs) {
+        for (const program of programs[programType]) {
+            document.getElementById('container-' + programType).innerHTML += program.html;
+
+            // programIndex.set(program.id, document.getElementById(program.id));
+        }
+    }
 }
 
 // show the correct value of the slider-range
@@ -278,9 +253,9 @@ function calculateDifference(programDate) {
 // initial function calls and eventListeners
 window.addEventListener('DOMContentLoaded', () => {
     showSliderValue(repeat); // initial slider-range
-    programs = getProgram();
-    buildPrograms(programs);
-    // search(); // initial programs
+    setPrograms();
+    buildPrograms();
+    search(); // initial programs
 
     document.getElementById('search').addEventListener('click', () => {
         search()
