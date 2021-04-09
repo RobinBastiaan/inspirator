@@ -270,5 +270,28 @@ window.addEventListener('DOMContentLoaded', () => {
             search();
         });
     }
+
+    // region AOS
+    const sections = [...document.querySelectorAll('a.program')]
+
+    const options = {
+        rootMargin: '0px',
+        threshold: 1
+    }
+
+    const callback = (entries) => {
+        entries.forEach(entry => {
+            if (entry.intersectionRatio >= 1) {
+                entry.target.classList.add('program__visible');
+            }
+        })
+    }
+
+    const observer = new IntersectionObserver(callback, options)
+
+    sections.forEach((section, index) => {
+        observer.observe(section)
+    })
+    // endregion
 });
 //</script>

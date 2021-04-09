@@ -178,13 +178,17 @@
     display: inline-block;
     text-decoration: none;
     box-sizing: border-box;
-    background: #fccf2d;
+    background: #FEE9A0;
     padding: 0 0.7em;
     width: 100%;
     overflow: hidden;
     color: #444;
     transition: 0.3s;
     line-height: 1.7em;
+}
+
+.program__visible {
+    background: #fccf2d;
 }
 
 img {
