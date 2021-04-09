@@ -80,16 +80,11 @@ class programClass {
 }
 
 function show(id) {
-    // if (programIndex.has(id)) {
-    //     programIndex.get(id).classList.remove('program__hidden');
-    // }
     document.getElementById(id).classList.remove('program__hidden');
+    document.getElementById(id).classList.add('programType');
 }
 
 function hide(id) {
-    // if (programIndex.has(id)) {
-    //     programIndex.get(id).classList.add('program__hidden');
-    // }
     document.getElementById(id).classList.add('program__hidden');
 }
 
