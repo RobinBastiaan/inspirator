@@ -1,7 +1,7 @@
 //<!-- The Script for the Inspirator -->
 //<script>/*0*/// Global initial values
 let foundPrograms = [];
-const repeat = 24;
+const repeat = 0;
 const types = {
     'creatief': 'Creatief',
     'sport': 'Sport & Spel',
