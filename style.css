@@ -21,6 +21,7 @@
     margin: 10px auto;
     padding: 10px;
     border-radius: 15px;
+    height: 20px;
 }
 
 
@@ -234,4 +235,19 @@ img {
 
 .label-checkbox > input[type='checkbox']:hover + img {
     filter: invert(73%) sepia(85%) saturate(416%) hue-rotate(355deg) brightness(50%) contrast(98%);
+}
+
+/* Animations */
+.update-counter {
+    animation-name: update-counter-animation;
+    animation-duration: 0.5s;
+}
+
+@keyframes update-counter-animation {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }

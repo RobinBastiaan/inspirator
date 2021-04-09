@@ -98,7 +98,6 @@ function setPrograms() {
     let children = document.getElementById('source-table').children[0];
     let len = children.childElementCount;
 
-    console.time('Build HTML');
     let containerData = [];
     for (const programType in programs) {
         containerData[programType] = '';
@@ -128,7 +127,6 @@ function setPrograms() {
     for (const programType in programs) {
         document.getElementById('container-' + programType).innerHTML += containerData[programType];
     }
-    console.timeEnd('Build HTML');
 }
 
 // to make sure some input transformations are correct
@@ -220,7 +218,11 @@ function showPrograms(foundPrograms) {
         }
     }
 
-    document.getElementById('found').innerHTML = (resultsFound ?? 0).toString();
+    let foundElement = document.getElementById('found');
+    foundElement.innerHTML = (resultsFound ?? 0).toString() + ' resultaten';
+    foundElement.classList.remove('update-counter');
+    void foundElement.offsetWidth; // trigger reflow to start the css animation
+    foundElement.classList.add('update-counter');
 }
 
 // show the correct value of the slider-range
