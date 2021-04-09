@@ -98,9 +98,15 @@ function setPrograms() {
     let children = document.getElementById('source-table').children[0];
     let len = children.childElementCount;
 
-    for (let i = 1; i < len; i++) {
-        let valueToPush = [];
+    console.time('Build HTML');
+    let containerData = [];
+    for (const programType in programs) {
+        containerData[programType] = '';
+    }
 
+    for (let i = 1; i < len; i++) {
+
+        let valueToPush = [];
         for (let j = 0; j <= 5; j++) {
             if (j === 0 || j === 5) { // only columns 1 to 4 need to have the split separator
                 valueToPush[j] = sanitizeInput(children.children[i].children[j].innerHTML);
@@ -110,13 +116,19 @@ function setPrograms() {
                 });
             }
         }
-        let program = new programClass(i, ...valueToPush);
 
+        let program = new programClass(i, ...valueToPush);
         let programLocationKey = Object.keys(types).find(key => types[key] === program.type[0]);
         if (typeof programLocationKey !== 'undefined') {
             programs[programLocationKey].push(program);
+            containerData[programLocationKey] += program.html;
         }
     }
+
+    for (const programType in programs) {
+        document.getElementById('container-' + programType).innerHTML += containerData[programType];
+    }
+    console.timeEnd('Build HTML');
 }
 
 // to make sure some input transformations are correct
@@ -211,17 +223,6 @@ function showPrograms(foundPrograms) {
     document.getElementById('found').innerHTML = (resultsFound ?? 0).toString();
 }
 
-// fill the program containers with program elements
-function buildPrograms() {
-    for (const programType in programs) {
-        for (const program of programs[programType]) {
-            document.getElementById('container-' + programType).innerHTML += program.html;
-
-            // programIndex.set(program.id, document.getElementById(program.id));
-        }
-    }
-}
-
 // show the correct value of the slider-range
 function showSliderValue(newValue) {
     let monthText = newValue === '1' ? ' maand' : ' maanden';
@@ -255,7 +256,6 @@ function calculateDifference(programDate) {
 window.addEventListener('DOMContentLoaded', () => {
     showSliderValue(repeat); // initial slider-range
     setPrograms();
-    buildPrograms();
     search(); // initial programs
 
     // add checkboxToggle event listeners
