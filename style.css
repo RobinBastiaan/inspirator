@@ -65,7 +65,7 @@
     float: left;
 }
 
-.red {
+.unfinished {
     color: #ff0000;
 }
 
@@ -184,7 +184,7 @@
     overflow: hidden;
     color: #444;
     transition: 0.3s;
-    line-height: 1.7em;
+    line-height: 2em;
 }
 
 .program__visible {

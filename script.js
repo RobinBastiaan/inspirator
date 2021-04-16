@@ -42,13 +42,13 @@ class programClass {
     }
 
     buildHtml() {
-        let classRed = this.unfinished ? 'class="red"' : '';
+        let classUnfinished = this.unfinished ? 'class="unfinished"' : '';
         let programSpecialText = String(this.special) === '' ? '' : ' (' + this.special + ')';
         let eWhen = (this.date[0]) ? this.date : '-- / ----';
         let htmlString;
 
         htmlString = `<a id="${this.id}" class="program" href="http://franciscus.pbworks.com/w/page/${this.name}">`;
-        htmlString += `<span ${classRed}><b>${this.name} ${programSpecialText}</b></span><br>`;
+        htmlString += `<span ${classUnfinished}><b>${this.name} ${programSpecialText}</b></span><br>`;
         htmlString += `<span class="lastRow">`;
 
         // location
