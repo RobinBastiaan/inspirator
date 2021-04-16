@@ -26,10 +26,8 @@ for (const property in locations) {
 }
 let programs = {};
 for (const property in types) {
-    programs[property] = []; //{...programLocations};
+    programs[property] = [];
 }
-
-// let programIndex = new Map();
 
 class programClass {
     constructor(id, name, location, type, date, special, unfinished) {
@@ -79,6 +77,13 @@ class programClass {
     }
 }
 
+// to make sure some input transformations are correct
+function sanitizeInput(input) {
+    return input.trim().replace('&amp;', '&').replace('&nbsp;', '');
+}
+//</script>
+
+//<script>/*1*/// display the programs with their values
 function show(id) {
     document.getElementById(id).classList.remove('program__hidden');
     document.getElementById(id).classList.add('programType');
@@ -87,7 +92,6 @@ function show(id) {
 function hide(id) {
     document.getElementById(id).classList.add('program__hidden');
 }
-
 // get all programs given in the html
 function setPrograms() {
     let children = document.getElementById('source-table').children[0];
@@ -122,11 +126,6 @@ function setPrograms() {
     for (const programType in programs) {
         document.getElementById('container-' + programType).innerHTML += containerData[programType];
     }
-}
-
-// to make sure some input transformations are correct
-function sanitizeInput(input) {
-    return input.trim().replace('&amp;', '&').replace('&nbsp;', '');
 }
 
 // search for the programs
@@ -191,10 +190,9 @@ function search() {
     // show the result
     showPrograms(foundPrograms);
 }
-
 //</script>
 
-//<script>/*1*/// display the programs with their values
+//<script>/*2*/// display the programs with their values
 function showPrograms(foundPrograms) {
     let resultsFound = foundPrograms.length;
 
