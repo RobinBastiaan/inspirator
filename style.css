@@ -204,6 +204,7 @@ img {
 .lastRow {
     display: flex;
     justify-content: space-between;
+    min-width: 150px;
 }
 
 .program:hover {
