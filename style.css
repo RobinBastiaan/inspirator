@@ -209,7 +209,7 @@ img {
     cursor: pointer;
 }
 
-.program__hidden {
+.programColumn .program__hidden {
     display: none;
 }
 
