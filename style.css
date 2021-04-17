@@ -82,15 +82,6 @@
     border-radius: 10px;
 }
 
-#inspirator a,
-#program-container a {
-    text-decoration: none;
-}
-
-#inspirator a:hover {
-    text-decoration: underline;
-}
-
 #inspirator label {
     display: inline;
     font-weight: normal;
@@ -178,10 +169,10 @@
     line-height: 1;
 }
 
-.program {
+.programColumn .program {
     position: relative;
     display: inline-block;
-    text-decoration: none;
+    text-decoration: none !important;
     box-sizing: border-box;
     background: var(--main-color);
     padding: 0 0.7em;
@@ -192,7 +183,7 @@
     line-height: 2em;
 }
 
-.program__visible {
+.programColumn .program__visible {
     background: var(--main-color);
 }
 
