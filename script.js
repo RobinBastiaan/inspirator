@@ -213,7 +213,7 @@ function showPrograms(foundPrograms) {
     }
 
     let foundElement = document.getElementById('found');
-    foundElement.innerHTML = (resultsFound ?? 0).toString() + ' resultaten';
+    foundElement.innerHTML = (resultsFound).toString() + ' resultaten';
     foundElement.classList.remove('update-counter');
     void foundElement.offsetWidth; // trigger reflow to start the css animation
     foundElement.classList.add('update-counter');
@@ -271,3 +271,5 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 });
 //</script>
+
+module.exports = {programClass, search}

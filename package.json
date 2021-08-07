@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/RobinBastiaan/inspirator/issues"
   },
-  "homepage": "https://github.com/RobinBastiaan/inspirator#readme"
+  "homepage": "https://github.com/RobinBastiaan/inspirator#readme",
+  "jest": {
+    "testEnvironment": "jsdom"
+  }
 }
