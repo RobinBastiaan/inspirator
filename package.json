@@ -1,0 +1,27 @@
+{
+  "private": true,
+  "name": "inspirator",
+  "version": "1.0.0",
+  "description": "This small web page plugin, that is heavily integrated to work on the PBworks platform, provides a convenient search for a suitable scouting program.",
+  "main": "script.js",
+  "dependencies": {
+    "jest": "^27.0.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RobinBastiaan/inspirator.git"
+  },
+  "keywords": [
+    "scouting"
+  ],
+  "author": "RobinBastiaan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RobinBastiaan/inspirator/issues"
+  },
+  "homepage": "https://github.com/RobinBastiaan/inspirator#readme"
+}
