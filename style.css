@@ -3,6 +3,10 @@
     --highlight-color: #FEE9A0;
 }
 
+input {
+    accent-color: white;
+}
+
 #source-table { /* only show the source table when editing the page */
     display: none;
 }
@@ -123,16 +127,6 @@
 
 
 /* Attribute Selectors */
-
-#inspirator input[type=range]:before {
-    content: attr(min);
-    padding-right: 5px;
-}
-
-#inspirator input[type=range]:after {
-    content: attr(max);
-    padding-left: 5px;
-}
 
 #programTable {
     width: 100%;
