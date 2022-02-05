@@ -210,6 +210,7 @@ img {
 .checkbox-container,
 .checkbox-container td {
     text-align: center;
+    margin-top: 8px;
 }
 
 .hidden-checkbox {

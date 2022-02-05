@@ -2812,25 +2812,27 @@
         <!-- Selection for program Date -->
         <section class="inspirator__content">
             <h4>Minimale herhalingsperiode</h4>
-            <input id="date" class="inspirator__range" type="range" name="points" min="0" max="48" value="0" step="1"
-                   onmousemove="showSliderValue(this.value)">
-            <output id="range">0</output>
+            <div class="checkbox-container">
+                <input id="date" class="inspirator__range" type="range" name="points" min="0" max="48" value="0" step="1"
+                       onmousemove="showSliderValue(this.value)">
+                <output id="range">0</output>
 
-            <!-- The Search Button Section -->
-            <hr>
-            <div class="left">
-                <label for="ever">
-                    <input id="ever" type="checkbox" name="nevers" checked value="ever">Eens gedaan
-                </label> /
-                <label for="never">
-                    <input id="never" type="checkbox" name="nevers" checked value="never">Nooit gedaan
-                </label> /
-                <label for="always">
-                    <input id="always" type="checkbox" name="always" checked value="always">Altijd
-                </label><br>
-                <label for="red">
-                    <input id="red" type="checkbox" name="red" checked value="red">Inclusief niet afgewerkte programma's
-                </label><br>
+                <!-- The Search Button Section -->
+                <hr>
+                <div class="left">
+                    <label for="ever">
+                        <input id="ever" type="checkbox" name="nevers" checked value="ever">Eens gedaan
+                    </label> /
+                    <label for="never">
+                        <input id="never" type="checkbox" name="nevers" checked value="never">Nooit gedaan
+                    </label> /
+                    <label for="always">
+                        <input id="always" type="checkbox" name="always" checked value="always">Altijd
+                    </label><br>
+                    <label for="red">
+                        <input id="red" type="checkbox" name="red" checked value="red">Inclusief niet afgewerkte programma's
+                    </label><br>
+                </div>
             </div>
         </section>
     </article>
