@@ -272,4 +272,4 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 //</script>
 
-module.exports = {programClass, search}
+module.exports = {programClass, search, calculateDifference}
