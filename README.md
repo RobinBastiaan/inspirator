@@ -5,13 +5,13 @@ activities have not yet been done for a while, so you know when they can be repe
 want to find! Be inspired by the Inspirator!
 
 <p align="center" width="100%">
-    <img width="15%" src="favicon.png?raw=true"> 
+    <img width="10%" src="favicon.png?raw=true"> 
 </p>
 
 ## About
 
-This small web page plugin provides a convenient filter for a suitable scouting program. Using the responsive form at
-the top of the page allows the user to only display those activities that fit the parameters. The total number of
+This small web page plugin provides a convenient filter for a suitable scouting activity. Using the responsive form at
+the top of the page allows the user to display only those activities that fit the parameters. The total number of
 results is directly shown with a subtle but neat animation. Clicking on a result will redirect the user to the
 associated page with complete instructions how to execute the activity.
 
@@ -26,6 +26,11 @@ had to be built around with.
   placed in multiple smaller plugins-widgets. This makes large classes and functions not possible.
 - When editing a PBworks page, all plugins-widgets are not executed. This allows the source table to be only hidden when
   not editing for a clean and easy way for users to edit it by using CSS within a plugin-widget.
+- To make this project work on both the platform and the localhost, I added <div id="wikipage-inner"> to the file. Since
+  this div is already present on a PBworks page, it is not needed to copy this element over. Only the source table needs
+  to be added to the page as plain HTML.
+- Changing the colors of this project in order to be used in other (PBworks) color themes should be fairly easy via the
+  use of CSS custom properties.
 
 ## Preview
 
