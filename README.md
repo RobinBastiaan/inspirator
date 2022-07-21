@@ -4,11 +4,15 @@ Are you clueless for what kind of scouting activity you want to organise this ti
 activities have not yet been done for a while, so you know when they can be repeated? Search specifically for what you
 want to find! Be inspired by the Inspirator!
 
+<p align="center" width="100%">
+    <img width="15%" src="favicon.png?raw=true"> 
+</p>
+
 ## About
 
-This small web page plugin provides a convenient filter for a suitable scouting program. Using the responsive form 
-at the top of the page allows the user to only display those activities that fit the parameters. The total number of 
-results is directly shown with a subtle but neat animation. Clicking on a result will redirect the user to the 
+This small web page plugin provides a convenient filter for a suitable scouting program. Using the responsive form at
+the top of the page allows the user to only display those activities that fit the parameters. The total number of
+results is directly shown with a subtle but neat animation. Clicking on a result will redirect the user to the
 associated page with complete instructions how to execute the activity.
 
 ## Installation & Inner workings
