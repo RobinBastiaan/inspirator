@@ -1,6 +1,13 @@
 :root {
+    /* Change these colors for easy portability to other (PBworks) color themes */
     --main-color: #fccf2d;
     --highlight-color: #FEE9A0;
+    --text-color: #444;
+    --unfinished-activity-color: #ff0000;
+    /* Use a tool like e.g. https://codepen.io/sosuke/pen/Pjoqqp to convert a hex color to CSS filter to be used on a SVG images */
+    --highlight-color-as-filter: invert(93%) sepia(19%) saturate(857%) hue-rotate(335deg) brightness(103%) contrast(99%);
+    --text-color-as-filter: invert(0%) sepia(0%) saturate(7482%) hue-rotate(96deg) brightness(94%) contrast(104%);
+    --hover-color-as-filter: invert(73%) sepia(85%) saturate(416%) hue-rotate(355deg) brightness(50%) contrast(98%);
 }
 
 input {
@@ -17,7 +24,7 @@ input {
     padding: 0;
     max-width: 960px;
     overflow: hidden;
-    color: #444;
+    color: var(--text-color);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -75,7 +82,7 @@ input {
 }
 
 .unfinished {
-    color: #ff0000;
+    color: var(--unfinished-activity-color);
 }
 
 
@@ -172,7 +179,7 @@ input {
     padding: 0 0.7em;
     width: 100%;
     overflow: hidden;
-    color: #444;
+    color: var(--text-color);
     transition: 0.3s;
     line-height: 2em;
 }
@@ -229,15 +236,16 @@ img {
 }
 
 .label-checkbox > input[type='checkbox'] + img {
-    filter: invert(93%) sepia(19%) saturate(857%) hue-rotate(335deg) brightness(103%) contrast(99%);
+    filter: var(--highlight-color-as-filter);
 }
 
 .label-checkbox > input[type='checkbox']:checked + img {
-    filter: invert(0%) sepia(0%) saturate(7482%) hue-rotate(96deg) brightness(94%) contrast(104%);
+    filter: var(--text-color-as-filter);
 }
 
+/* Slightly lighter hover color to indicate affordance */
 .label-checkbox > input[type='checkbox']:hover + img {
-    filter: invert(73%) sepia(85%) saturate(416%) hue-rotate(355deg) brightness(50%) contrast(98%);
+    filter: var(--hover-color-as-filter);
 }
 
 
@@ -262,9 +270,9 @@ img {
 }
 
 @keyframes program-type-animation {
-     from {
-         background: var(--highlight-color);
-     }
-     to {
-     }
- }
+    from {
+        background: var(--highlight-color);
+    }
+    to {
+    }
+}
