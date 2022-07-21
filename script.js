@@ -1,4 +1,6 @@
 //<!-- The Script for the Inspirator -->
+//<!-- Since the platform does not allow large file-size within a plugins-widget, the script of the Inspirator has to be placed in multiple smaller plugins-widgets. -->
+
 //<script>/*0*/// Global initial values
 let foundPrograms = [];
 const repeat = 0;
@@ -93,6 +95,7 @@ function show(id) {
 function hide(id) {
     document.getElementById(id).classList.add('program__hidden');
 }
+
 // get all programs given in the html
 function setPrograms() {
     let children = document.getElementById('source-table').children[0];
