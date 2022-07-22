@@ -4,10 +4,6 @@ Are you clueless for what kind of scouting activity you want to organise this ti
 activities have not yet been done for a while, so you know when they can be repeated? Search specifically for what you
 want to find! Be inspired by the Inspirator!
 
-<p align="center" width="100%">
-    <img width="10%" src="favicon.png?raw=true"> 
-</p>
-
 ## About
 
 This small web page plugin provides a convenient filter for a suitable scouting activity. Using the responsive form at
@@ -35,3 +31,7 @@ had to be built around with.
 ## Preview
 
 ![Inspirator Preview](https://user-images.githubusercontent.com/38226878/114247614-d05f1080-9995-11eb-8cbe-bb53b2c3005d.PNG)
+
+<p align="center" width="100%">
+    <img width="10%" src="favicon.png?raw=true"> 
+</p>
