@@ -37,7 +37,7 @@ class programClass {
         this.name = name;
         this.location = location;
         this.type = type;
-        this.date = date;
+        this.date = date[0] === '' ? ['--/----'] : date;
         this.special = special;
         this.unfinished = !!unfinished;
         this.html = this.buildHtml();
@@ -46,12 +46,12 @@ class programClass {
     buildHtml() {
         let displayName = this.name.split(/(?=[A-Z])/).join('<wbr>');
         let classUnfinished = this.unfinished ? 'class="unfinished"' : '';
-        let programSpecialText = String(this.special) === '' ? '' : ' (' + this.special + ')';
-        let eWhen = (this.date[0]) ? this.date : '-- / ----';
+        let specialText = String(this.special) === '' ? '' : ' (' + this.special + ')';
+        let whenIconName = this.date.length > 1 ? 'wanneer-meerdere' : 'wanneer';
         let htmlString;
 
         htmlString = `<a id="${this.id}" class="program" href="http://franciscus.pbworks.com/w/page/${this.name}">`;
-        htmlString += `<span ${classUnfinished}><b>${displayName}</b> ${programSpecialText}</span><br>`;
+        htmlString += `<span ${classUnfinished}><b>${displayName}</b> ${specialText}</span><br>`;
         htmlString += `<span class="lastRow">`;
 
         // location
@@ -64,7 +64,7 @@ class programClass {
         htmlString += `</span>`;
 
         // date
-        htmlString += `<span><img alt="${this.location.join(', ')}" title="${this.location.join(', ')}" src="src/wanneer.png"> ${eWhen}</span>`;
+        htmlString += `<span><img alt="${this.date.join(', ')}" title="${this.date.join(', ')}" src="src/${whenIconName}.png"> ${this.date.at(-1)}</span>`;
 
         // type
         htmlString += `<span>`;
@@ -96,7 +96,7 @@ function hide(id) {
     document.getElementById(id).classList.add('program__hidden');
 }
 
-// get all programs given in the html
+// get all programs given in the HTML
 function setPrograms() {
     let children = document.getElementById('source-table').children[0];
     let len = children.childElementCount;
@@ -107,10 +107,9 @@ function setPrograms() {
     }
 
     for (let i = 1; i < len; i++) {
-
         let valueToPush = [];
         for (let j = 0; j <= 5; j++) {
-            if (j === 0 || j === 5) { // only columns 1 to 4 need to have the split separator
+            if (j === 0 || j === 5) { // the columns that do not need to have the split separator
                 valueToPush[j] = sanitizeInput(children.children[i].children[j].innerHTML);
             } else {
                 valueToPush[j] = children.children[i].children[j].innerHTML.split(',').map(function (item) {
@@ -218,7 +217,7 @@ function showPrograms(foundPrograms) {
     let foundElement = document.getElementById('found');
     foundElement.innerHTML = (resultsFound).toString() + ' resultaten';
     foundElement.classList.remove('update-counter');
-    void foundElement.offsetWidth; // trigger reflow to start the css animation
+    void foundElement.offsetWidth; // trigger reflow to start the CSS animation
     foundElement.classList.add('update-counter');
 }
 
@@ -238,13 +237,13 @@ function checkboxToggle(target) {
 
 // calculate difference in months with current time
 function calculateDifference(programDate) {
-    if (programDate === '*') { // program can always be done
+    if (programDate === '*') { // yearly programs
         return 0;
     }
 
     // get today value
     let today = new Date();
-    let mm = today.getMonth() + 1; // January is 0!
+    let mm = today.getMonth() + 1; // 0 = January!
     let yyyy = today.getFullYear();
 
     let whenResult = programDate.split("/");
@@ -268,7 +267,7 @@ window.addEventListener('DOMContentLoaded', () => {
     // add search event listeners
     let clickableSearchElements = document.querySelectorAll("input");
     for (let i = 0; i < clickableSearchElements.length; i++) {
-        clickableSearchElements[i].addEventListener('click', (e) => {
+        clickableSearchElements[i].addEventListener('click', () => {
             search();
         });
     }
