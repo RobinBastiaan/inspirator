@@ -202,12 +202,12 @@ input {
     background: var(--main-color);
 }
 
-img {
+#wikipage-inner img {
     height: 32px;
     width: 32px;
 }
 
-.program img {
+#wikipage-inner .program img {
     height: 16px;
     width: 16px;
 }
