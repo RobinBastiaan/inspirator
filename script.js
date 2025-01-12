@@ -82,7 +82,7 @@ class programClass {
 
 // to make sure some input transformations are correct
 function sanitizeInput(input) {
-    return input.trim().replace('&amp;', '&').replace('&nbsp;', '');
+    return input.replace('&amp;', '&').replace('&nbsp;', '').trim();
 }
 //</script>
 
@@ -170,10 +170,10 @@ function search() {
             if (!selectedLocations.some(value => program.location.includes(value))) {
                 continue;
             }
-            if (!ever && program.date[0] && program.date[0] !== '*') {
+            if (!ever && program.date[0] && program.date[0] !== '--/----' && program.date[0] !== '*') {
                 continue;
             }
-            if (!never && !program.date[0] && program.date[0] !== '*') {
+            if (!never && program.date[0] === '--/----' && program.date[0] !== '*') {
                 continue;
             }
             if (!always && program.date[0] === '*') {
