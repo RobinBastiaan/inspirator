@@ -58,13 +58,13 @@ class programClass {
         htmlString += `<span>`;
         this.location.forEach(location => {
             if (location) {
-                htmlString += `<img alt="${location}" title="${location}" src="src/${location.toString().toLowerCase()}.png"> `;
+                htmlString += `<img alt="${location}" title="${location}" src="src/${location.toString().toLowerCase()}.svg"> `;
             }
         });
         htmlString += `</span>`;
 
         // date
-        htmlString += `<span><img alt="${this.date.join(', ')}" title="${this.date.join(', ')}" src="src/${whenIconName}.png"> ${this.date.at(-1)}</span>`;
+        htmlString += `<span title="${this.date.join(', ')}"><img alt="${this.date.join(', ')}" src="src/${whenIconName}.svg"> ${this.date.at(-1)}</span>`;
 
         // type
         htmlString += `<span>`;
