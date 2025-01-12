@@ -30,7 +30,7 @@ had to be built around with.
 
 ## Preview
 
-![Inspirator Preview](https://user-images.githubusercontent.com/38226878/114247614-d05f1080-9995-11eb-8cbe-bb53b2c3005d.PNG)
+![preview](https://github.com/user-attachments/assets/aece1032-a660-417c-abea-7c0789070237)
 
 <p align="center" width="100%">
     <img width="10%" src="favicon.png?raw=true"> 
